@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8" />
+    <title>Choose your vehicle</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            
+            background:
+                radial-gradient(circle at top, #222632 0%, #050608 55%, #000000 100%);
+            color: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 24px;
+        }
+
+        .top-left {
+            display: flex;
+            gap: 10px;
+            align-items: baseline;
+        }
+
+        .top-left h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .top-left span {
+            font-size: 13px;
+            color: #a0a0a0;
+        }
+
+        .top-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #a0a0a0;
+        }
+
+        .top-right select {
+            background: #14151b;
+            border-radius: 20px;
+            border: 1px solid #2b2d35;
+            padding: 6px 12px;
+            color: #f5f5f5;
+            font-size: 13px;
+            outline: none;
+        }
+
+        /* GRID */
+
+        .vehicle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        /* CARD */
+
+        .vehicle-card {
+            background: radial-gradient(circle at top, #2a2e38 0%, #14151b 40%, #08090d 100%);
+            border-radius: 18px;
+            padding: 16px 16px 14px;
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.65);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .vehicle-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 14px;
+            /* background i brendshëm si në foto (rreth veturës gri e hapur) */
+            background:none;
+          
+                
+            margin-bottom: 14px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* vendos foton reale */
+        .vehicle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+
+            display: block;
+            transition:transform 0.4s ease;
+
+        }
+
+        .vehicle-header {
+            margin-bottom: 10px;
+        }
+
+        .vehicle-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .vehicle-subtitle {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: #b0b0b0;
+        }
+        .vehicle-image:hover{
+          transform:scale(1.05);
+        }
+
+        .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+}
+
+.btn {
+    flex: 1;
+    padding: 5px 0;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: all 0.3s ease;
+}
+
+.btn.buy {
+    background: linear-gradient(135deg, #007bff, #0052cc);
+    color: #fff;
+    margin-right: 8px;
+}
+
+.btn.customize {
+    background: transparent;
+    border: 1px solid #3a3c48;
+    color: #cfcfcf;
+}
+
+.btn.buy:hover {
+    background: linear-gradient(135deg, #3399ff, #0066cc);
+    transform: scale(1.03);
+}
+
+.btn.customize:hover {
+    background: #2b2e37;
+    transform: scale(1.03);
+}
+
+        .badges {
+            display: flex;
+            gap: 6px;
+            margin-top: 4px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 2px 6px;
+            border-radius: 999px;
+            border: 1px solid #30323c;
+            color: #c3c3c3;
+        }
+
+        /* PRICE */
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+
+        .price-main {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .price-main .amount {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .price-main .per {
+            font-size: 11px;
+            color: #b0b0b0;
+        }
+
+        .price-extra {
+            font-size: 11px;
+            color: #a5a5a5;
+            text-align: right;
+        }
+
+        /* ICONS + GEARBOX */
+
+        .bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+        }
+
+        .icon-list {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .icon-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #bcbcbc;
+        }
+
+        .icon-circle {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1px solid #3a3c48;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+        }
+
+        .gearbox-tag {
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid #3c7cff;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: #e4ebff;
+            background: linear-gradient(135deg, #2750ff, #4d7dff);
+        }
+
+        .gearbox-tag--neutral {
+            background: none;
+            border-color: #3a3c48;
+            color: #cfcfcf;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="top-bar">
+        <div class="top-left">
+           <h1>Discover - Design - Drive</h1>
+           <br>
+           <h6>Rev GT</h6>
+            <span>4 available</span>
+        </div>
+        <div class="top-right">
+            <span>Sort by:</span>
+            <select>
+                <option>Most popular first</option>
+                <option>Price: low to high</option>
+                <option>Price: high to low</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="vehicle-grid">
+
+        <!-- PORSCHE 911 -->
+        <article class="vehicle-card">
+            <div class="vehicle-image">
+               
+                 <img src="/fotografi/porsche1.jpg" alt="Porsche 911"> 
+               
+            </div>
+
+            <div class="vehicle-header">
+                <div class="vehicle-title">Porsche 911</div>
+                <div class="vehicle-subtitle">OR SIMILAR SPORTS CAR</div>
+                <div class="badges">
+                    <span class="badge">Advice of the day</span>
+                </div>
+            </div>
+
+            <div class="price-row">
+                
+                <div class="price-main">
+                    1.599,00 € total price<br>
+                   
+                </div>
+            </div>
+
+            <div class="bottom-row">
+
+             
+                <div class="icon-list">
+                    <span class="icon-item">
+                        <span class="icon-circle">4</span> persons
+                    </span>
+                    <span class="icon-item">
+                        <span class="icon-circle">2</span> bags
+                    </span>
+                    <span class="icon-item">
+                        <span class="icon-circle">2</span> doors
+                    </span>
+                </div>
+                
+            </div>
+             <diV class="action">
+                <button class="btn buy" onclick="window.location.href='buy.html'">Buy now</button>
+                 <button class="btn customize" onclick="window.location.href='deisgn.html'">Customize</button>
+              </diV>
+
+        </article>
+
+        <!-- MERCEDES S63 -->
+        <article class="vehicle-card">
+            <div class="vehicle-image">
+                 <img src="/fotografi/mercedes.png" alt="Mercedes S63">
+                
+            </div>
+
+            <div class="vehicle-header">
+                <div class="vehicle-title">Mercedes-AMG S63</div>
+                <div class="vehicle-subtitle">OR SIMILAR LUXURY SEDAN</div>
+                <div class="badges">
+                    <span class="badge">Early bird special</span>
+                </div>
+            </div>
+
+            <div class="price-row">
+                
+                <div class="price-main">
+                    1.450,00 € total price<br>
+                   
+                </div>
+            </div>
+
+            <div class="bottom-row">
+                <div class="icon-list">
+                    <span class="icon-item">
+                        <span class="icon-circle">5</span> persons
+                    </span>
+                    <span class="icon-item">
+                        <span class="icon-circle">3</span> bags
+                    </span>
+                    <span class="icon-item">
+                        <span class="icon-circle">4</span> doors
+                    </span>
+                </div>
+               
+            </div>
+             <diV class="action">
+                <button class="btn buy" onclick="window.location.href='buy.html'">Buy now</button>
+                 <button class="btn customize" onclick="window.location.href='deisgn.html'">Customize</button>
+              </diV>
+        </article>
+
+        <!-- AUDI RS6 -->
+        <article class="vehicle-card">
+            <div class="vehicle-image">
+                <img src="/fotografi/audi.png" alt="Audi RS6">
+                
+            </div>
+
+            <div class="vehicle-header">
+                <div class="vehicle-title">Audi RS6</div>
+                <div class="vehicle-subtitle">OR SIMILAR PERFORMANCE WAGON</div>
+                <div class="badges">
+                    <span class="badge">Early bird special</span>
+                </div>
+            </div>
+
+            <div class="price-row">
+                
+                <div class="price-main">
+                    1.320,00 € total price<br>
+                   
+                </div>
+            </div>
+
+            <div class="bottom-row">
+                <div class="icon-list">
+                    <span class="icon-item">
+                        <span class="icon-circle">5</span> persons
+                    </span>
+                    <span class="icon-item">
+                        <span class="icon-circle">4</span> bags
+                    </span>
+                    <span class="icon-item">
+                        <span class="icon-circle">4</span> doors
+                    </span>
+                </div>
+              
+            </div>
+             <diV class="action">
+                <button class="btn buy" onclick="window.location.href='buy.html'">Buy now</button>
+                 <button class="btn customize" onclick="window.location.href='deisgn.html'">Customize</button>
+              </diV>
+        </article>
+
+        <!-- BMW M3 -->
+        <article class="vehicle-card">
+            <div class="vehicle-image">
+                <img src="/fotografi/bmw.png" alt="BMW M3">
+                
+            </div>
+
+            <div class="vehicle-header">
+                <div class="vehicle-title">BMW M3</div>
+                <div class="vehicle-subtitle">OR SIMILAR SPORTS SEDAN</div>
+                <div class="badges">
+                    <span class="badge">Popular choice</span>
+                </div>
+            </div>
+
+            <div class="price-row">
+                
+                <div class="price-main">
+                    1.250,00 € total price<br>
+                   
+                </div>
+            </div>
+
+            <div class="bottom-row">
+                <div class="icon-list">
+                    <span class="icon-item">
+                        <span class="icon-circle">5</span> persons
+                    </span>
+                    <span class="icon-item">
+                        <span class="icon-circle">3</span> bags
+                    </span>
+                    <span class="icon-item">
+                        <span class="icon-circle">4</span> doors
+                    </span>
+                </div>
+                
+            </div>
+             <diV class="action">
+                <button class="btn buy" onclick="window.location.href='buy.html'">Buy now</button>
+                 <button class="btn customize" onclick="window.location.href='deisgn.html'">Customize</button>
+              </diV>
+        </article>
+
+    </div>
+</div>
+</body>
+</html>

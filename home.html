@@ -3,9 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
+    <title>Car landing page</title>
+    <style>
+        * {margin:0; padding:0; box-sizing: border-box;}
+        body {font-family: 'Arial', sans-serif; overflow-x: hidden;
+        background-color: #000;
+        color:white;
+                }
+        .hero {
+            position:relative;
+            width: 100%;
+            height: 100vh;
+            background: url('fotografi/background.mp.jpg') center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: columns;
+            text-align: center;
+        }
+        .header{
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: capitalize;
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-text {
+            position:absolute;
+            bottom:0%;
+            left:0%;
+
+
+            font-size: 3.8rem;
+            font-weight: 700;
+            text-transform: capitalize;
+            line-height: 1.1;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+           
+            text-align: left;
+        }
+        .hero-sub {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      opacity: 0.8;
+      letter-spacing: 1px;
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+        
+
+    </style>
 </head>
 <body>
-    Vlera
+    <div class="hero">
+        <div class="header">RevGT</div>
+        <div class="hero-text">Rev Beyond Limits</div>
+    </div>
+    
 </body>
 </html>

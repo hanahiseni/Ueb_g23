@@ -4,8 +4,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About us</title>
+    <link rel="icon" href="fotografi/logo.jpg">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="about.css">
+    
 </head>
 <body>
-    Vlera
+    <header>
+        <h1>Revgt</h1>
+        <nav>
+            <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="nav-links">
+                <li id="mode-toggle" style="cursor: pointer; font-size: 1.4rem;"><i class="fas fa-sun"></i></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="services-item">
+                    <a href="#" id="services-link">Services</a>
+                    <ul class="dropdown">
+                        <li><a href="BuyItems/product.html">Products</a></li>
+                        <li><a href="BuyItems/buy.html">Buy Car</a></li>
+                        <li><a href="design.html">Customize Car</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main">
+        <div class="main-content">
+            <h2>About Revgt</h2>
+            <p>Precision. Passion. Performance.</p>
+            <a href="what_we_do" class="btn">Explore Services</a>
+        </div>
+    </section>
+
+    <section class="section" id="driven">
+        <h3>Driven by Design</h3>
+        <p>Since day one, Revgt has been about more than just cars - it's about the thrill of transformation. From premium vehicle sales to advanced car styling and performance upgrades, we build experiences for those wholive and breathe the road.</p>
+    </section>
+
+    <section class="section" id="what_we_do">
+        <h3>What We Do</h3>
+        <div class="grid">
+            <a href="BuyItems/buy.html" class="card">
+            <img src="fotografi/mercedes.png" alt="Car sales">
+            <div class="card-container">
+                <h4>Exclusive Car Sales</h4>
+                <p>We bring top-tier vehicles to the market - from luxury rides to performance beasts - ready to own the road.</p>
+                <a href="BuyItems/buy.html" class="btn">View Cars</a>
+            </div>
+            </a>
+
+            <a href="design.html" class="card">
+                <img src="fotografi/bmw2.png" alt="Car styling">
+                <div class="card-container">
+                    <h4>Styling & Tuning</h4>
+                    <p>Custom styling, detailing, and performance tuning that redifines your car's identity.</p>
+                    <a href="design.html" class="btn">Customize Now</a>
+                </div>
+            </a>
+
+            <a href="BuyItems/product.html" class="card">
+                <img src="fotografi/audi2.png" alt="Tech">
+                <div class="card-container">
+                    <h4>Smart Car Tech</h4>
+                    <p>Integrating modern tech - infotainment upgrades and performance data systems - keeping your car ahead of the curve.</p>
+                    <a href="BuyItems/product.html" class="btn">View More</a>
+                </div>
+            </a>
+        </div>
+    </section>
+    
+    <section class="section" id="packages">
+        <h3>Performance Packages</h3>
+        <table class="package-table">
+            <thead>
+                <tr>
+                    <th>Package</th>
+                    <th>Includes</th>
+                    <th>Starting Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Base</td>
+                    <td>Detailing, Wheel Alignment</td>
+                    <td>$499</td>
+                </tr>
+                <tr>
+                    <td>Sport</td>
+                    <td>Custom Exhaust, Suspension Tune, Performance Tires</td>
+                    <td>$1,200</td>
+                </tr>
+                <tr>
+                    <td>Elite</td>
+                    <td>Full Engine Remap, Aero Kit, Interior Redesign</td>
+                    <td>$2,800</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="section" id="values">
+        <h3>Our Core Values</h3>
+        <ul class="values-list">
+            <li><i class="fas fa-cog"></i>Precision engineering in every detail</li>
+            <li><i class="fas fa-fire"></i>Passion for cars that defines our identity</li>
+            <li><i class="fas fa-lightbulb"></i>Constant innovation in performance design</li>
+            <li><i class="fas fa-handshake"></i>Long-term trust and transparency with our clients</li>
+        </ul>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2>Revgt</h2>
+                <p>Crafted with passion for those who live fast and think faster.</p>
+            </div>
+
+            <div class="footer-links">
+                <div>
+                    <h4>Company</h4>
+                    <a href="about.html">About</a>
+                    <a href="#">Careers</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="BuyItems/product.html">Our cars</a>
+                    <a href="design.html">Services</a>
+                    <a href="#">Gallery</a>
+                </div>
+                <div>
+                    <h4>Follow us</h4>
+                    <div class="socials">
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i>Instagram</a>
+                        <a href="tiktok.com"><i class="fab fa-tiktok"></i>TikTok</a>
+                        <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i>Youtube</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Revgt. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
 </body>
+<script src="about.js"></script>
 </html>

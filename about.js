@@ -1,24 +1,41 @@
-//hamburger menu
-const menuToggle=document.getElementById('menu-toggle');
-const navLinks=document.getElementById('nav-links');
-menuToggle.addEventListener('click', ()=>navLinks.classList.toggle('active'));
+// MODE TOGGLE
+const modeToggle = document.getElementById("mode-toggle");
+const body = document.body;
 
-//mobile dropdown
-const servicesLink=document.getElementById('services-link');
-servicesLink.addEventListener('click',(e)=>{
-    if(window.innerWidth<=768){
-        e.preventDefault();
-        const parentLi=servicesLink.parentElement;
-        parentLi.classList.toggle('dropdown-active');
-    }
-})
-document.addEventListener('click', (e)=>{
-    const parentLi=servicesLink.parentElement;
-    if(parentLi.classList.contains('dropdown-active')&&!parentLi.contains(e.target)){
-        parentLi.classList.remove('dropdown-active');
-    }
-})
+// load saved mode
+if (localStorage.getItem("theme") === "light-mode") {
+    body.classList.add("light-mode");
+    modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+}
 
+modeToggle.addEventListener("click", () => {
+    body.classList.toggle("light-mode");
+
+    if (body.classList.contains("light-mode")) {
+        localStorage.setItem("theme", "light");
+        modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    } else {
+        localStorage.setItem("theme", "dark");
+        modeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+});
+
+// MOBILE MENU
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+});
+
+// SERVICES DROPDOWN
+const servicesLink = document.getElementById("services-link");
+const servicesItem = document.querySelector(".services-item");
+
+servicesLink.addEventListener("click", (e) => {
+    e.preventDefault(); // vetëm dropdown
+    servicesItem.classList.toggle("active");
+});
 //section fade
 const sections=document.querySelectorAll('.section');
 const observer=new IntersectionObserver((entries)=>{
@@ -43,19 +60,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
     });
-});
-
-//light mode
-const modeToggle=document.getElementById('mode-toggle');
-modeToggle.addEventListener('click',()=>{
-    document.body.classList.toggle('light-mode');
-    const icon=modeToggle.querySelector('i');
-    if(document.body.classList.contains('light-mode')){
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-    }
-    else{
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    }
 });

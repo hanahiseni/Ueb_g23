@@ -28,92 +28,45 @@ header h1{
     color: #fff;
     font-size: 1.8rem;
 }
-nav{
-    position: relative;
-}
-.nav-links{
-    list-style: none;
+nav {
+    width: 100%;
+    padding: 20px 60px;
     display: flex;
-    gap: 25px;
-}
-.nav-links li{
-    position: relative;
-}
-.nav-links li a{
-    text-decoration: none;
-    color: #fff;
-    padding: 8px 0;
-    display: block;
-    transition: color 0.3s;
-}
-.nav-links li a:hover{
-    color: #ccc;
+    justify-content: flex-start;
+    align-items: center;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(12px);
+    z-index: 10;
 }
 
-/*Dropdown*/
-.nav-links li .dropdown{
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #111;
-}
-.nav-links li:hover .dropdown{
-    display: block;
-}
-.nav-links li .dropdown li a{
-    padding: 10px 20px;
-    color: #bbb;
-    font-size: 0.95rem;
-    transition: all 0.3s;
-}
-.nav-links li .dropdown li a:hover{
-    color: #fff;
-    background: #222;
-}
-
-/*Hamburger*/
-.menu-toggle{
+.menu-toggle {
     display: none;
     font-size: 1.8rem;
-    color: #fff;
+    color: white;
     cursor: pointer;
 }
-@media(max-width: 768px){
-    .menu-toggle{
-        display: block;
-    }
-    .nav-links{
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background: #111;
-        width: 200px;
-        border: 1px solid #222;
-        border-radius: 8px;
-        display: none;
-    }
-    .nav-links.active{
-        display: flex;
-    }
-    .nav-links li{
-        margin: 10px;
-        text-align: center;
-    }
-    .nav-links li .dropdown{
-        position: static;
-        display: none;
-        flex-direction: column;
-    }
-    .nav-links li.dropdown-active .dropdown{
-        display: flex !important;
-    }
-    .nav-links li:hover .dropdown{
-        display: none !important;
-    }
+.nav-links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 200px;
+}
+/* Links */
+.nav-links li a,
+.nav-links li i {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    opacity: 0.85;
+    transition: 0.3s;
 }
 
+.nav-links li a:hover,
+.nav-links li i:hover {
+    opacity: 1;
+}
 /*Main*/
 .main{
     position: relative;
@@ -159,6 +112,72 @@ nav{
 .main-content .btn:hover{
     background: #ff1f1f;
     transform: scale(1.05);
+}
+/* DROPDOWN */
+.services-item {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    display: none;
+    min-width: 160px;
+    z-index: 20;
+}
+
+.services-item.active .dropdown {
+    display: block;
+    flex-direction: column;
+}
+
+.dropdown li a {
+    display: block;
+    padding: 10px 18px;
+    font-size: 13px;
+}
+    /* MOBILE MENU */
+@media screen and (max-width: 992px) {
+    .nav-links {
+        position: fixed;
+        top: 50px; 
+        right: -100%;
+        height: auto; 
+        width: 250px;
+        background: rgba(0,0,0,0.9);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 20px; 
+        gap: 20px;
+        transition: 0.3s;
+        border-radius: 12px; 
+        z-index: 15;
+    }
+
+    .nav-links.open {
+        right: 10px; 
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .dropdown {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-width: 0;
+        background: rgba(0,0,0,0.95);
+        border-radius: 8px;
+        flex-direction: column;
+        padding: 10px 0;
+        gap: 0;
+    }
 }
 /*Sections*/
 .section{
@@ -387,7 +406,9 @@ body.light-mode header h1{
 body.light-mode .menu-toggle i{
     color: #1a1a1a;
 }
-
+body.light-mode #mode-toggle i{
+    color: #1a1a1a;
+}
 /*nav links*/
 body.light-mode .nav-links li a{
     color: #000;
@@ -410,8 +431,8 @@ body.light-mode .nav-links li .dropdown li a:hover{
 
 /*per tel*/
 @media(max-width:768px){
-    body.light-mode .nav-links.active{
-        background: #f5f5f5;
+    body.light-mode .nav-links{
+        background: #f5f5f5 !important;
     }
     body.light-mode .nav-links li.dropdown-active .dropdown{
         background: #f5f5f5;

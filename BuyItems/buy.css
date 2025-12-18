@@ -1,0 +1,87 @@
+body {
+      background-color: #0d0d0f;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .checkout-container {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 40px;
+      border-radius: 20px;
+      width: 400px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.08);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #4da3ff;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    input, select {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    input::placeholder {
+      color: #ccc;
+    }
+
+    button {
+      background: #4da3ff;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #1e7de6;
+    }
+
+    select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
+  background-color: #1a1a1a; /* ngjyrë e errët si input-at */
+  color: white;              /* tekst i bardhë për brenda */
+  font-size: 15px;
+  appearance: none;          /* heq stilin default të browser-it */
+  cursor: pointer;
+}
+
+/* për opsionet brenda dropdown-it */
+option {
+  background-color: #111; /* ngjyra e listës që shfaqet */
+  color: white;           /* ngjyra e tekstit */
+  padding: 10px;
+}
+
+/* kur kalon me maus mbi opsionet */
+option:hover {
+  background-color: #007bff; /* blu si butoni “Confirm Purchase” */
+  color: white;
+}

@@ -595,11 +595,47 @@
        
                 </article>
 
-           <script>
-const toggle = document.getElementById("theme-toggle");
-const body = document.body;
+                <br>
+                <section class="compare-section">
+  <h2>Compare Our Top Models</h2>
+  <table>
+    <tr>
+      <th>Model</th>
+      <th>Price (€)</th>
+      <th>Doors</th>
+      <th>Persons</th>
+      <th>Category</th>
+    </tr>
+    <tr>
+      <td>Porsche 911</td>
+      <td>1,599</td>
+      <td>2</td>
+      <td>4</td>
+      <td>Sports Car</td>
+    </tr>
+    <tr>
+      <td>BMW M3</td>
+      <td>1,250</td>
+      <td>4</td>
+      <td>5</td>
+      <td>Sports Sedan</td>
+    </tr>
+    <tr>
+      <td>Audi RS6</td>
+      <td>1,320</td>
+      <td>4</td>
+      <td>5</td>
+      <td>Performance Wagon</td>
+    </tr>
+  </table>
+</section>
 
-// kontrollo nëse ekziston preferenca në localStorage
+
+           <script>
+    const toggle = document.getElementById("theme-toggle");
+    const body = document.body;
+
+
 if (localStorage.getItem("theme") === "light") {
   body.classList.add("light-mode");
   toggle.textContent = "🌞";

@@ -87,7 +87,7 @@ function buildConfigurator(cfg, ids){
   update(firstModelKey, activeColorId);
 }
 
-// ===================== DATA (PATHS: fotografi/) =====================
+
 const PORSCHE = {
   p911: {
     label: "Porsche 911",
@@ -97,6 +97,8 @@ const PORSCHE = {
       { id:"p1", label:"Red",   hex:"#8b0a15", img:"fotografi/porsche 3.png" },
       { id:"p2", label:"Grey",  hex:"#55565a", img:"fotografi/porsche1.png" },
       { id:"p3", label:"White", hex:"#f8fafc", img:"fotografi/porsche2.png" },
+      { id:"p4", label:"Light Blue", hex:"#60a5fa", img:"fotografi/porsche 4.png"},
+      { id:"p5", label:"Purple", hex:"#8b5cf6", img:"fotografi/porsche 5.png"}
     ],
   }
 };
@@ -110,19 +112,23 @@ const AUDI = {
       { id:"a4", label:"Black", hex:"#0b0b0b", img:"fotografi/audi 1.png" },
       { id:"a5", label:"White", hex:"#f3f4f6", img:"fotografi/audi 2.png" },
       { id:"a6", label:"Blue",  hex:"#1e3a8a", img:"fotografi/audi 3.png" },
+      {id:"a7", label:"Deep Green", hex:"#14532d", img:"fotografi/audi 4.png"},
+      {id:"a8", label:"Yellow", hex:"#facc15", img:"fotografi/audi 5.png"}
     ],
   }
 };
 
 const MERC = {
   mamg: {
-    label: "Mercedes",
+    label: "Mercedes Benz",
     basePrice: "€110,000",
     specs: { power: "476 PS", acceleration: "4.0 s", topSpeed: "295 km/h" },
     colours: [
       { id:"m10", label:"Black", hex:"#0b0b0b", img:"fotografi/mercedes 3.png" },
       { id:"m11", label:"White", hex:"#f8fafc", img:"fotografi/mercedes 1.png" },
       { id:"m12", label:"Red",   hex:"#b91c1c", img:"fotografi/mercedes 2.png" },
+      {id:"m13", label:"Deep Green", hex:"#14532d", img:"fotografi/mercedes 4.png"},
+      {id:"m14", label:"Light Blue", hex:"#60a5fa", img:"fotografi/mercedes 5.png"}
     ],
   }
 };
@@ -136,6 +142,8 @@ const BMW = {
       { id:"b7", label:"Black", hex:"#0b0b0b", img:"fotografi/bmw 1.png" },
       { id:"b8", label:"White", hex:"#f8fafc", img:"fotografi/bmw 2.png" },
       { id:"b9", label:"Blue",  hex:"#1e3a8a", img:"fotografi/bmw 3.png" },
+      {id:"b10", label:"Vibrant Green", hex:"#22c55e", img:"fotografi/bmw 4.png"},
+      {id:"b11", label:"Pink", hex:"#ec5aa7", img:"fotografi/bmw 5.png"}
     ],
   }
 };
@@ -154,40 +162,38 @@ buildConfigurator(PORSCHE, {
 });
 
 buildConfigurator(AUDI, {
-  modelSelect:"audiModel",
-  swatches:"audiSwatches",
-  summaryModel:"audiSummaryModel",
-  summaryColor:"audiSummaryColor",
-  title:"audiTitle",
-  price:"audiPrice",
-  img:"audiImg",
-  power:"audiPower",
-  accel:"audiAccel",
-  top:"audiTop",
+    modelSelect:"audiModel",
+    swatches:"audiSwatches",
+    summaryModel:"audiSummaryModel",
+    summaryColor:"audiSummaryColor",
+    title:"audiTitle",
+    price:"audiPrice",
+    img:"audiImg",
+    power:"audiPower",
+    accel:"audiAccel",
+    top:"audiTop",
 });
-
 buildConfigurator(MERC, {
-  modelSelect:"mercModel",
-  swatches:"mercSwatches",
-  summaryModel:"mercSummaryModel",
-  summaryColor:"mercSummaryColor",
-  title:"mercTitle",
-  price:"mercPrice",
-  img:"mercImg",
-  power:"mercPower",
-  accel:"mercAccel",
-  top:"mercTop",
+    modelSelect:"mercModel",
+    swatches:"mercSwatches",
+    summaryModel:"mercSummaryModel",
+    summaryColor:"mercSummaryColor",
+    title:"mercTitle",
+    price:"mercPrice",
+    img:"mercImg",
+    power:"mercPower",
+    accel:"mercAccel",
+    top:"mercTop",
 });
-
 buildConfigurator(BMW, {
-  modelSelect:"bmwModel",
-  swatches:"bmwSwatches",
-  summaryModel:"bmwSummaryModel",
-  summaryColor:"bmwSummaryColor",
-  title:"bmwTitle",
-  price:"bmwPrice",
-  img:"bmwImg",
-  power:"bmwPower",
-  accel:"bmwAccel",
-  top:"bmwTop", // FIXED
+    modelSelect:"bmwModel",
+    swatches:"bmwSwatches",
+    summaryModel:"bmwSummaryModel",
+    summaryColor:"bmwSummaryColor",
+    title:"bmwTitle",
+    price:"bmwPrice",
+    img:"bmwImg",
+    power:"bmwPower",
+    aceel:"bmwAccel",
+    top:"bmwTop",
 });

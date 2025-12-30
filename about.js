@@ -20,22 +20,6 @@ modeToggle.addEventListener("click", () => {
     }
 });
 
-// MOBILE MENU
-const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document.getElementById("nav-links");
-
-menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-});
-
-// SERVICES DROPDOWN
-const servicesLink = document.getElementById("services-link");
-const servicesItem = document.querySelector(".services-item");
-
-servicesLink.addEventListener("click", (e) => {
-    e.preventDefault(); // vetëm dropdown
-    servicesItem.classList.toggle("active");
-});
 //section fade
 const sections=document.querySelectorAll('.section');
 const observer=new IntersectionObserver((entries)=>{

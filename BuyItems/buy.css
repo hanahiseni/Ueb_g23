@@ -66,22 +66,22 @@ body {
   margin: 10px 0;
   border: none;
   border-radius: 6px;
-  background-color: #1a1a1a; /* ngjyrë e errët si input-at */
-  color: white;              /* tekst i bardhë për brenda */
+  background-color: #1a1a1a; 
+  color: white;             
   font-size: 15px;
-  appearance: none;          /* heq stilin default të browser-it */
+  appearance: none;          
   cursor: pointer;
 }
 
-/* për opsionet brenda dropdown-it */
+
 option {
-  background-color: #111; /* ngjyra e listës që shfaqet */
-  color: white;           /* ngjyra e tekstit */
+  background-color: #111; 
+  color: white;          
   padding: 10px;
 }
 
-/* kur kalon me maus mbi opsionet */
+
 option:hover {
-  background-color: #007bff; /* blu si butoni “Confirm Purchase” */
+  background-color: #007bff; 
   color: white;
 }

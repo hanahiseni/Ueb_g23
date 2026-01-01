@@ -1,5 +1,5 @@
 function formatMoneyEUR(value) {
-  // minimal format; ti mundesh me e ndreq sipas stilit tënd
+ 
   return `${value.toFixed(2)} €`;
 }
 
@@ -16,7 +16,7 @@ function wireAddToCartButtons() {
       const title = btn.dataset.title;
       const img = btn.dataset.img;
 
-      // price ruaje si numër (p.sh. 1599.00). Mos e ruaj me presje/€ në storage.
+     
       const price = Number(btn.dataset.price);
 
       if (!id || !title || !Number.isFinite(price)) {
@@ -27,9 +27,7 @@ function wireAddToCartButtons() {
       addToCart({ id, title, price, img });
 
       updateCartCountUI();
-
-      // opsionale: feedback minimal
-      btn.textContent = "Added";
+   btn.textContent = "Added";
       setTimeout(() => (btn.textContent = "Add to cart"), 700);
     });
   });

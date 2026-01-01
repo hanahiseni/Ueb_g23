@@ -360,7 +360,7 @@
 }
 
 .compare-section td:nth-child(2) {
-  color: #4da3ff; /* pak blu si butoni "Buy Now" */
+  color: #4da3ff; 
   font-weight: 600;
 }
 .btn {

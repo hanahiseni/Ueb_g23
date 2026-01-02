@@ -37,3 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCartCountUI();
   wireAddToCartButtons();
 });
+document.querySelectorAll('.buy-now').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.id;
+  
+   
+    window.location.assign(`buy.html?car=${encodeURIComponent(id)}`);
+  });
+});

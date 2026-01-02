@@ -17,6 +17,7 @@ function buildConfigurator(cfg, ids){
   const power = document.getElementById(ids.power);
   const accel = document.getElementById(ids.accel);
   const top = document.getElementById(ids.top);
+   const saveBtn = ids.saveBtn ? document.getElementById(ids.saveBtn) : null;
 
   modelSelect.innerHTML = "";
   Object.keys(cfg).forEach((key) => {
@@ -82,9 +83,13 @@ function buildConfigurator(cfg, ids){
     update(key, activeColorId);
   });
 
-  const firstModelKey = modelSelect.value;
-  renderSwatches(firstModelKey);
-  update(firstModelKey, activeColorId);
+  const modelKeys = Object.keys(cfg);
+const firstModelKey = modelKeys[0];
+modelSelect.value = firstModelKey;
+
+renderSwatches(firstModelKey);
+update(firstModelKey, activeColorId);
+
 }
 
 
@@ -194,6 +199,6 @@ buildConfigurator(BMW, {
     price:"bmwPrice",
     img:"bmwImg",
     power:"bmwPower",
-    aceel:"bmwAccel",
+    accel:"bmwAccel",
     top:"bmwTop",
 });

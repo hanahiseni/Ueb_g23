@@ -6,38 +6,24 @@
     <title>Car landing page</title>
     <link rel="stylesheet" href="home.css">
     <link rel="icon" href="fotografi/logo.jpg">
-    <!-- FONTS & ICONS -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    
 </head>
 <body>
   <!--Video-ja ne background-->
   <video autoplay loop muted playsinline id="bg-video">
     <source src="./fotografi/kerri.mp4" type="video/mp4">
   </video>
-  <!--navbar-->
-  <nav>
-    <div class="menu-toggle" id="menu-toggle">
-      <i class="fas fa-bars"></i>
-    </div>
-    <ul class="nav-links" id="nav-links">
-      <li id="mode-toggle">
-        <i class="fas fa-sun"></i>
-      </li>
-      <li class="lang-toggle" id="lang-toggle">EN</li>
-      <li><a href="home.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li class="services-item">
-        <a href="#" id="services-link">Services</a>
-        <ul class="dropdown">
-          <li><a href="BuyItems/product.html">Products</a></li>
-          <li><a href="BuyItems/buy.html">Buy Car</a></li>
-          <li><a href="design.html">Customize Car</a></li>
-        </ul>
-      </li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+
+<nav class="navbar">
+  <ul class="nav-links">
+
+    <li><a href="about.html">About</a></li>
+    <li><a href="BuyItems/product.html">Products</a></li>
+    <li><a href="design.html">Customize</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
 
   <!--Hero-->
   <section class="hero">
@@ -47,9 +33,19 @@
       Minimal design.
       Maximum performance.
     </p>
-    <button class="explore-btn">Explore models</button>
+<button class="explore-btn" id="exploreBtn">Explore models</button>
   </section>
-
+  <section id="about">
+  <h2>About Us</h2>
+  <p>
+    revGT is focused on electric performance, minimalist design and innovation.
+  </p>
+</section>
   <script src="home.js"></script>
+
+
+  <section id="models">
+</section>
+
 </body>
 </html>

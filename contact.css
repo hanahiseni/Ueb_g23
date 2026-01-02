@@ -469,9 +469,14 @@ a:visited {
   background: rgba(255,255,255,.06);
 }
 .footer-links {
-  margin-top: -260px;
+  margin-top: -230px;
 }
 h1 {
   font-size: 48px !important;
 }
+
+.footer-links a {
+  font-size: 16.5px;  
+}
+
 

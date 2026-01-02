@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="buy.css">
     <title>Check out - RevGT</title>
+    <link rel="icon" href="/fotografi/logo.jpg">
 </head>
 <body>
     <div class="checkout-container">
@@ -39,6 +40,48 @@
     <script src="cart-lib.js"></script>
    
     <script>
+document.getElementById("confirmPurchaseBtn").addEventListener("click", function () {
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const payment = document.getElementById("payment").value;
+
+  // VALIDATION
+  if (!name) {
+    alert("Full Name is required.");
+    return;
+  }
+
+  if (!email || !validateEmail(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  if (!address) {
+    alert("Address is required.");
+    return;
+  }
+
+  if (!payment) {
+    alert("Please select a payment method.");
+    return;
+  }
+
+
+  alert("✅ Purchase confirmed! Thank you for choosing RevGT.");
+
+ 
+  document.getElementById("checkoutForm").reset();
+
+  if (typeof clearCart === "function") {
+    clearCart();
+  }
+});
+
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+</script>
     document.addEventListener("DOMContentLoaded", () => {
     const cart = loadCart();
     if (!cart.length) {

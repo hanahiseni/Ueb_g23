@@ -48,11 +48,12 @@ nav{
 .lang-toggle:hover{
     opacity: 1;
 }
+ 
 .nav-links{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between; 
     align-items: center;
-    gap: 250px;
+    width: 100%;
 }
 .nav-links li a,
 .nav-links li i{
@@ -81,6 +82,7 @@ nav{
     display: none;
     min-width: 160px;
     z-index: 20;
+    
 }
 .services-item.active .dropdown{
     display: block;
@@ -164,7 +166,6 @@ body.light .menu-toggle i{
         flex-direction: column;
         align-items: flex-start;
         padding: 40px 20px;
-        gap: 20px;
         transition: 0.3s;
         border-radius: 12px;
         z-index: 15;
@@ -204,4 +205,58 @@ body.light .menu-toggle i{
         color: black !important;
         padding: 12px 20px;
     }
+}
+
+html, body {
+  overflow-y: auto !important;
+}
+html {
+  scroll-behavior: smooth;
+}
+.products-section {
+  min-height: 100vh;
+  padding: 120px 80px;
+  color: white;
+
+  /* kjo e rregullon krejt */
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+}
+.products-grid {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.product-card {
+  flex: 1;
+  height: 280px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 20px;
+  backdrop-filter: blur(10px);
+}
+.products-section h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.explore-btn {
+  text-decoration: none;   
+  color: #000;             
+}.explore-btn:visited,
+.explore-btn:hover,
+.explore-btn:active {
+  color: #000;            
+  text-decoration: none;
+}
+body {
+  background-color: black;
+}
+
+body {
+  transition: opacity 0.11s ease-in-out; /* 180ms */
 }

@@ -1,25 +1,3 @@
-// MODE TOGGLE
-const modeToggle = document.getElementById("mode-toggle");
-const body = document.body;
-
-// load saved mode
-if (localStorage.getItem("theme") === "light-mode") {
-    body.classList.add("light-mode");
-    modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-}
-
-modeToggle.addEventListener("click", () => {
-    body.classList.toggle("light-mode");
-
-    if (body.classList.contains("light-mode")) {
-        localStorage.setItem("theme", "light");
-        modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-    } else {
-        localStorage.setItem("theme", "dark");
-        modeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-    }
-});
-
 //section fade
 const sections=document.querySelectorAll('.section');
 const observer=new IntersectionObserver((entries)=>{

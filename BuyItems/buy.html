@@ -82,6 +82,34 @@ function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 </script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const cart = loadCart();
+    if (!cart.length) {
+      // shfaq mesazh / ridrejto
+      console.log("Cart empty");
+      return;
+    }
+    console.log("Checkout cart:", cart, "total:", cartTotal(cart));
+    // Këtu e renderon checkout-in si do.
+    });
+    </script>
+
+    <script>
+    const params = new URLSearchParams(window.location.search);
+    const car = params.get('car');
+    if (car) {
+    document.getElementById('car').value = car;
+    }
+    function confirmPurchase() {
+    alert("✅ Purchase confirmed! Thank you for choosing Rev GT!");
+     }
+    </script>
+
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="transition.js"></script>
+
+</body>
+
 
 </body>
 </html>

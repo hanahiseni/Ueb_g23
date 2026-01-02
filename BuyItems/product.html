@@ -5,6 +5,8 @@
     <title>Choose your vehicle</title>
    
     <link rel="stylesheet" href="product.css">
+   
+
 </head>
 
 
@@ -12,12 +14,15 @@
 
     <header>
 
-        <a class="cart-link" href="cart.html">
-         Cart (<span id="cartCount">0</span>)
-        </a>
+      <a href="cart.html" class="cart-btn" aria-label="Open cart">
+        <span class="cart-icon" aria-hidden="true">🛒</span>
+        <span class="cart-text">Cart</span>
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+
 
     </header>
-<div class="page">
+<main class="page">
     <div class="top-bar">
         <div class="top-left">
            <h1>Discover - Design - Drive</h1>
@@ -34,7 +39,7 @@
         </select>
       </div>
     </div>
-</div>
+
 
 
 
@@ -81,6 +86,7 @@
                 
             </div>
             <br>
+            <div class="actions">
           <button
                 class="btn primary add-to-cart"
                 type="button"
@@ -89,6 +95,16 @@
                 data-price="1599.00"
                 data-img="/fotografi/porsche1.jpg"
             >   Add to Cart </button>
+
+          
+
+             <button
+             class="btn primary buy-now"
+             type="button"
+              data-id="porsche_911"
+             > Buy Now </button>
+        </div>
+
 
         </article>
 
@@ -130,6 +146,7 @@
                 
             </div>
             <br>
+             <div class="actions">
             <button 
              class=" btn primary add-to-cart"
              type="button"
@@ -138,6 +155,15 @@
              data-price="1320.00"
              data-img="/fotografi/audi.png"
              >Add to Cart</button>
+
+             
+             <button
+             class="btn primary buy-now"
+             type="button"
+              data-id="audi_rs6"
+             > Buy Now </button>
+        </div>
+
          
         </article>
 
@@ -179,6 +205,7 @@
                <br>
             </div>
             <br>
+             <div class="actions">
               <button 
              class=" btn primary add-to-cart"
              type="button"
@@ -187,6 +214,13 @@
              data-price="1450.00"
              data-img="/fotografi/mercedes.png"
              >Add to Cart</button>
+
+            <button
+             class="btn primary buy-now"
+             type="button"
+              data-id="mercedes_s63"
+             > Buy Now </button>
+             </div>
          
         </article>
 
@@ -229,7 +263,7 @@
                 
             </div>
             <br>
-
+             <div class="actions">
               <button 
              class=" btn primary add-to-cart"
              type="button"
@@ -239,6 +273,12 @@
              data-img="/fotografi/bmw.png"
              >Add to Cart</button>
 
+             <button
+             class="btn primary buy-now"
+             type="button"
+              data-id="bmw_m3"
+             > Buy Now </button>
+                </div>
          
         </article>
             <!--Lamborghini Huracan-->
@@ -282,6 +322,7 @@
                          </div>
                     </div>
                     <br>
+                     <div class="actions">
               <button 
              class=" btn primary add-to-cart"
              type="button"
@@ -290,6 +331,13 @@
              data-price="1890.00"
              data-img="/fotografi/lamborghini.png"
              >Add to Cart</button> 
+
+             <button
+             class="btn primary buy-now"
+             type="button"
+              data-id="lamborghini_huracan"
+             > Buy Now </button>
+                     </div>
             
                 </article>
 
@@ -334,7 +382,7 @@
                          </div>
                     </div>
                     <br>
-                
+                 <div class="actions">
          <button 
              class=" btn primary add-to-cart"
              type="button"
@@ -344,6 +392,12 @@
              data-img="/fotografi/ferrari.png"
              >Add to Cart</button>
 
+             <button
+             class="btn primary buy-now"
+             type="button"
+              data-id="ferrari_f8_tributo"
+             > Buy Now </button>
+                 </div>
                 </article>
 
                  <!--Tesla Model S Plaid-->
@@ -387,7 +441,7 @@
                          </div>
                     </div>
                     <br>
-
+                         <div class="actions">
                       <button 
                       class=" btn primary add-to-cart"
                          type="button"
@@ -396,7 +450,13 @@
                         data-price="1480.00"
                         data-img="/fotografi/tesla.png"
                         >Add to Cart</button>
-               
+
+                      <button
+                        class="btn primary buy-now"
+                        type="button"
+                        data-id="tesla_sPlaid"
+                        > Buy Now </button>
+                         </div>
        
                 </article>
 
@@ -441,7 +501,7 @@
                          </div>
                     </div>
                     <br>
-               
+                    <div class="actions">
                       <button 
                          class=" btn primary add-to-cart"
                          type="button"
@@ -450,6 +510,14 @@
                         data-price="1320.00"
                         data-img="/fotografi/range rover sport.png"
                         >Add to Cart</button>
+
+                         <button
+                         class="btn primary buy-now"
+                         type="button"
+                         data-id="range_rover_sport"
+                         > Buy Now </button>
+                    </div>
+
                 </article>
 
                     <!--Porsche Cayenne Turbo-->
@@ -493,15 +561,22 @@
                          </div>
                     </div>
                     <br>
+                     <div class="actions">
                       <button 
-             class=" btn primary add-to-cart"
-             type="button"
-             data-id="porsche_caynnere_turbo"
-             data-title="Porsche Caynne Turbo"
-             data-price="1440.00"
-             data-img="/fotografi/porsche_caynnere_turbo.png"
-             >Add to Cart</button>
-                
+                     class=" btn primary add-to-cart"
+                    type="button"
+                    data-id="porsche_caynnere_turbo"
+                     data-title="Porsche Caynne Turbo"
+                      data-price="1440.00"
+                     data-img="/fotografi/porsche_caynnere_turbo.png"
+                      >Add to Cart</button>
+
+                     <button
+                    class="btn primary buy-now"
+                    type="button"
+                     data-id="porsche_caynnere_turbo"
+                     > Buy Now </button>
+                     </div>
                 </article>
 
                     <!--Auid R8-->
@@ -545,6 +620,7 @@
                          </div>
                     </div>
                     <br>
+                     <div class="actions">
                         <button 
              class=" btn primary add-to-cart"
              type="button"
@@ -553,7 +629,13 @@
              data-price="1880.00"
              data-img="/fotografi/audi_r8.png"
              >Add to Cart</button>
-               
+
+                <button
+                class="btn primary buy-now"
+                type="button"
+                data-id="audi_r8"
+                > Buy Now </button>
+               </div>
                 </article>
                 
                     <!--BMW i8-->
@@ -597,7 +679,7 @@
                          </div>
                     </div>
                     <br>
-                   
+                    <div class="actions">
                         <button 
              class=" btn primary add-to-cart"
              type="button"
@@ -606,7 +688,14 @@
              data-price="1650.00"
              data-img="/fotografi/bmw_i8.png"
              >Add to Cart</button>
-       
+
+                    <button
+             class="btn primary buy-now"
+             type="button"
+            data-id="bmw_i8"
+             > Buy Now </button>
+                        </div>
+
                 </article>
 
                     <!--Mercedes AMG GT-->
@@ -650,7 +739,7 @@
                          </div>
                     </div>
                     <br>
-                
+                 <div class="actions">
                         <button 
              class=" btn primary add-to-cart"
              type="button"
@@ -659,18 +748,38 @@
              data-price="1730.00"
              data-img="/fotografi/mercedes_amg_gt.png"
              >Add to Cart</button>
-       
+
+                <button
+              class="btn primary buy-now"
+              type="button"
+              data-id="mercedes_amg_gt"
+             > Buy Now </button>
+                    </div>
                 </article>
 
                 <br>
-                <section class="compare-section">
+                <section class="compare-section"></section>
 
-  
-</section>
-  
+            </main>
 <script src="cart-lib.js"></script>
 <script src="products-cart.js"></script>
-<script src="sort.js"> </script>
+<script src="sort.js"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const badge = document.getElementById("cartCount");
+  if (!badge) return;
+
+  const cart = loadCart(); // nga cart-lib.js
+  const count = (cart || []).reduce(
+    (sum, item) => sum + (item.qty || 1),
+    0
+  );
+
+  badge.textContent = count;
+});
+</script>
 
 </body>
 </html>

@@ -1,87 +1,87 @@
 body {
-      background-color: #0d0d0f;
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+  background-color: #0d0d0f;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
-    .checkout-container {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 40px;
-      border-radius: 20px;
-      width: 400px;
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.08);
-    }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #4da3ff;
-    }
+.checkout-container {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 40px;
+  border-radius: 20px;
+  width: 400px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
+}
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
 
-    label {
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
+.checkout-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ffffff;            
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
 
-    input, select {
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-    }
 
-    input::placeholder {
-      color: #ccc;
-    }
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-    button {
-      background: #4da3ff;
-      border: none;
-      padding: 12px;
-      border-radius: 10px;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
 
-    button:hover {
-      background: #1e7de6;
-    }
-
-    select {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+input,
+select {
+  padding: 12px 14px;
+  border-radius: 12px;
   border: none;
-  border-radius: 6px;
-  background-color: #1a1a1a; 
-  color: white;             
-  font-size: 15px;
-  appearance: none;          
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+input::placeholder {
+  color: #bcbcbc;
+}
+
+select {
+  appearance: none;
   cursor: pointer;
 }
 
 
 option {
-  background-color: #111; 
-  color: white;          
-  padding: 10px;
+  background-color: #111;
+  color: #ffffff;
 }
 
+button {
+  margin-top: 10px;
+  background: #ffffff;       
+  color: #000000;          
+  border: none;
+  padding: 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
 
-option:hover {
-  background-color: #007bff; 
-  color: white;
+button:hover {
+  filter: brightness(0.95);
+}
+
+button:active {
+  transform: translateY(1px);
 }

@@ -12,13 +12,35 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="about.css">
-    <link rel="stylesheet" href="footer.css"
     
 </head>
 <body>
-    <header>
-        <h1>RevGT</h1>
-    </header>
+<header class="nav">
+  <div class="logo">
+    <img src="fotografi/revgt.png" alt="RevGT">
+    <span>RevGT</span>
+  </div>
+
+<nav class="menu">
+  <a href="home.html">Home</a>
+
+  <div class="dropdown">
+    <span class="dropbtn">Services</span>
+
+    <div class="dropmenu">
+      <a href="BuyItems/product.html">Products</a>
+      <a href="BuyItems\buy.html">Buy Car</a>
+      <a href="design.html">Customize Car</a>
+    </div>
+  </div>
+
+  <a href="contact.html">Contact</a>
+</nav>
+
+
+</header>
+
+
 
     <section class="main">
         <div class="main-content">
@@ -138,6 +160,28 @@
 
      
      <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+
+     <script>
+  const dropdown = document.getElementById("servicesDropdown");
+  const button = dropdown.querySelector(".dropbtn");
+
+  // toggle dropdown on click
+  button.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle("active");
+  });
+
+  // close dropdown when clicking outside
+  document.addEventListener("click", () => {
+    dropdown.classList.remove("active");
+  });
+
+  // prevent closing when clicking inside menu
+  dropdown.querySelector(".dropmenu").addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+</script>
 
      
         <footer class="site-footer">

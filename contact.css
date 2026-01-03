@@ -433,50 +433,79 @@ html { scroll-behavior: smooth; }
   color: #fff;
 }
 
+/* ================= MENU ================= */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+/* links */
+.menu a,
+.dropbtn {
+  color: #cfcfcf;
+  font-size: 16.5px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menu a:hover,
+.dropbtn:hover {
+  color: #ffffff;
+}
+
+/* ================= DROPDOWN ================= */
+.dropdown {
+  position: relative;
+}
+
+/* BUTONI SERVICES – rrit hit-area */
+.dropbtn {
+  display: inline-block;
+  padding: 10px 0;
+}
+
+/* MENUJA */
 .dropmenu {
   position: absolute;
-  top: 100%;
+  top: calc(100% - 2px);   /* 🔑 s’ka GAP */
   left: 50%;
   transform: translateX(-50%);
-  display: none;
 
-  background: #111;
-  padding: 12px;
-  border-radius: 12px;
+  min-width: 220px;
+  padding: 14px 0;
+
+  background: rgba(15,15,15,0.95);
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+
+  display: none;
   z-index: 9999;
 }
 
-.dropdown:hover .dropmenu {
+/* 🔥 SEKRETI – rri hapur kur je mbi Services OSE menu */
+.dropdown:hover .dropmenu,
+.dropmenu:hover {
   display: block;
 }
 
-
-.dropmenu a{
+/* items */
+.dropmenu a {
   display: block;
-  padding: 10px 12px;
-  color: #fff;
+  padding: 14px 26px;
+  font-size: 16px;
+  color: #cfcfcf;
   text-decoration: none;
-  border-radius: 10px;
-}
-a,
-a:visited {
-  color: #aaa;           
-  text-decoration: none; /* hek vijën */
 }
 
-
-.dropmenu a:hover{
-  background: rgba(255,255,255,.06);
-}
-.footer-links {
-  margin-top: -230px;
-}
-h1 {
-  font-size: 48px !important;
+.dropmenu a:hover {
+  background: rgba(255,255,255,0.06);
+  color: #ffffff;
 }
 
-.footer-links a {
-  font-size: 16.5px;  
+/* ================= SHMANG MSHELJEN ================= */
+.nav,
+.menu {
+  overflow: visible;
 }
-
-

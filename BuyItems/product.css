@@ -607,3 +607,144 @@
   }
 }
 
+
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
+}
+
+/* ================= NAVBAR ================= */
+.nav {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 28px 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.92),
+    rgba(0,0,0,0.75)
+  );
+
+  backdrop-filter: blur(6px);
+  overflow: visible;
+}
+
+header.nav {
+  background: rgba(0,0,0,0.92) !important;
+   margin-bottom: 20px
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
+.logo span {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ================= MENU ================= */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  overflow: visible;
+}
+
+
+.menu a:hover,
+.dropbtn:hover {
+  color: rgba(255,255,255,0.95);
+}
+
+/* ================= DROPDOWN ================= */
+.dropdown {
+  position: relative;
+}
+
+/* Services hover area */
+.dropbtn {
+  display: inline-block;
+  padding: 12px 0;
+}
+
+/* dropdown menu */
+.dropmenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  min-width: 220px;
+  padding: 14px 0;
+
+  background: rgba(15,15,15,0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+
+  display: none;
+  z-index: 9999;
+}
+
+.dropdown:hover .dropmenu,
+.dropmenu:hover {
+  display: block;
+}
+
+/* dropdown items */
+.dropmenu a {
+  display: block;
+  padding: 14px 26px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.dropmenu a:hover {
+  background: rgba(255,255,255,0.06);
+  color: #ffffff;
+}
+
+
+header.nav .menu a:link,
+header.nav .menu a:visited,
+header.nav .menu a:active,
+header.nav .menu a:focus {
+  color: rgba(255,255,255,0.65) !important;
+  text-decoration: none !important;
+}
+
+header.nav {
+  padding-top:18px;
+  padding-bottom: 18px;
+   width: 100vw;   
+   margin-left: calc(-50vw + 50%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0.35)
+  ) !important;
+  backdrop-filter: blur(12px);
+  height:
+
+}html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+

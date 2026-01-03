@@ -39,32 +39,28 @@
   </nav>
 </header>
 
-    <header>
+    
+<section class="hero">
+  <div class="hero-stack">
 
-        <a href="favorites.html" class="cart-btn" aria-label="Open favorites">
-        ★ Favorites
-        <span class="cart-badge" id="favCount">0</span>
-        </a>
+    <a href="favorites.html" class="cart-btn">
+      ★ Favorites <span class="cart-badge" id="favCount">0</span>
+    </a>
 
+    <h2 class="hero-title">
+      Discover - Design - Drive
+      <span class="brand">RevGT</span>
+    </h2>
 
-    </header>
-<main class="page">
-    <div class="top-bar">
-        <div class="top-left">
-           <h1>Discover - Design - Drive</h1>
-          
-           <h6>RevGT</h6>
-            
-        </div>
-      <div class="top-right">
-        <span>Sort by:</span>
-        <select id="sortSelect">
-          <option value="popular">Most popular first</option>
-          <option value="price-asc">Price: low to high</option>
-          <option value="price-desc">Price: high to low</option>
-        </select>
-      </div>
+    <div class="sort-vertical">
+      <span>Sort by:</span>
+      <select>
+        <option>Most popular first</option>
+      </select>
     </div>
+
+  </div>
+</section>
 
 
 
@@ -790,9 +786,6 @@
   
 </section>
 
-
-  
-=======
             </main>
 
 <script src="cart-lib.js"></script>
@@ -814,10 +807,6 @@ document.addEventListener("DOMContentLoaded", () => {
   badge.textContent = count;
 });
 </script>
-
-<footer class="site-footer">
-  © <span id="currentYear"></span> RevGT Corporation · All rights reserved
-</footer>
 
 <script src="../footer.js" defer></script>
 

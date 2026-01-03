@@ -32,7 +32,6 @@
           padding: 0 24px;        
         }
 
-        /* HEADER */
 
       .top-bar{
       width: 100%;
@@ -53,8 +52,8 @@
 
         .top-left h6{
          white-space: nowrap;
-         font-size: 12px;   /* opsionale */
-         opacity: 0.9;      /* opsionale */
+         font-size: 12px;  
+         opacity: 0.9;    
       }
 
         .top-left span {
@@ -86,7 +85,7 @@
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 24px;
          align-items: stretch;
-          max-width: 1180px;   /* NGUSHTIMI REAL */
+          max-width: 1180px;  
         margin: 32px auto;   
       }
 
@@ -106,7 +105,7 @@
             width: 100%;
             height: 165px;
             border-radius: 14px;
-            /* background i brendshëm si në foto (rreth veturës gri e hapur) */
+          
             background:none;
           
                 
@@ -118,7 +117,7 @@
             position: relative;
         }
 
-        /* vendos foton reale */
+     
         .vehicle-image img {
             width: 100%;
             height: 100%;
@@ -395,7 +394,7 @@
 .bs__track {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 300px;          /* madhësia e kartës */
+  grid-auto-columns: 300px;        
   gap: 16px;
 
   overflow-x: auto;
@@ -434,7 +433,7 @@
 
 .cars-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 kerre per rresht */
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 .top-left{
@@ -519,21 +518,20 @@
 
 
 
-/* Laptop / tablet horizontal */
 @media (max-width: 1200px) {
   .cars-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* Tablet */
+
 @media (max-width: 900px) {
   .cars-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Mobile */
+
 @media (max-width: 600px) {
   .cars-grid {
     grid-template-columns: 1fr;
@@ -776,10 +774,19 @@ html, body {
 .top-bar {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;   /* 🔥 majtas */
-  gap: 20px;                 /* distanca e njëjtë vertikale */
+  align-items: flex-start;   
+  gap: 20px;                 
   max-width: 900px;
 }
 
+.favorites-page #favList img {
+  width: 120px !important;
+  height: 80px !important;
+  max-width: 120px !important;
+  max-height: 80px !important;
+  object-fit: cover !important;
+  border-radius: 10px;
+  display: block;
+}
 
 

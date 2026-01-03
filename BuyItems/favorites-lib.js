@@ -55,10 +55,7 @@ function favCount() {
   return getFavs().length;
 }
 
-/**
- * Updates badge if it exists on the page.
- * Works on product.html and can also work on favorites.html if you include the badge there.
- */
+
 function renderFavBadge() {
   const el = document.getElementById("favCount");
   if (el) el.textContent = String(favCount());

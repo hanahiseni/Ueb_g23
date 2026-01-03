@@ -15,7 +15,7 @@ body{
 
 
 
-/*Main*/
+
 .main{
     position: relative;
     height: 80vh;
@@ -64,7 +64,6 @@ body{
 }
    
 
-/*Sections*/
 .section{
     opacity: 0;
     transform: translateY(50px);
@@ -83,7 +82,7 @@ body{
     color: #fff;
 }
 
-/*grid card*/
+
 .grid{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -136,7 +135,7 @@ body{
     transform: scale(1.05);
 }
 
-/*Table*/
+
 .package-table{
     width: 100%;
     border-collapse: collapse;
@@ -161,7 +160,6 @@ body{
     background: #1d1d1d;
 }
 
-/*values*/
 .values-list{
     list-style: none;
     margin-top: 20px;
@@ -347,7 +345,7 @@ footer{
     rgba(0,0,0,0.85)
   );
 
-  /* 🔴 E BËN STABIL */
+
   backdrop-filter: blur(6px);
 }
 
@@ -363,7 +361,7 @@ footer{
   justify-content: space-between;
 }
 
-/* LOGO */
+
 #main-header .logo {
   display: flex;
   align-items: center;
@@ -386,7 +384,7 @@ footer{
   font-weight: 600;
 }
 
-/* MENU */
+
 #main-header .menu {
   display: flex;
   align-items: center;

@@ -4,7 +4,6 @@
     box-sizing: border-box;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif ;
 }
-/*Video*/
 #bg-video{
     position: fixed;
     inset: 0;
@@ -14,7 +13,7 @@
     filter: brightness(50%);
     z-index: -2;
 }
-/*overlay*/
+
 body::after{
     content: "";
     position: fixed;
@@ -22,7 +21,7 @@ body::after{
     background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
     z-index: -1;
 }
-/*navbar*/
+
 .navbar{
     width: 100%;
     padding: 20px 60px;
@@ -58,7 +57,7 @@ body::after{
 .nav-links li i:hover{
     opacity: 1;
 }
-/*hero*/
+
 .hero{
     height: 100vh;
     display: flex;
@@ -137,5 +136,5 @@ html, body {
 }
 body {
   background-color: black;
-  transition: opacity 0.11s ease-in-out; /* 180ms */
+  transition: opacity 0.11s ease-in-out; 
 }

@@ -47,6 +47,5 @@ document.addEventListener("DOMContentLoaded", () => {
     render(sorted);
   });
 
-  // Optional: apliko sortim sipas option-it aktual menjëherë
   select.dispatchEvent(new Event("change"));
 });

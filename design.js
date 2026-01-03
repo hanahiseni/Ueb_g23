@@ -110,7 +110,7 @@ const PORSCHE = {
 
 const AUDI = {
   ars: {
-    label: "Audi",
+    label: "Audi RS7",
     basePrice: "€95,000",
     specs: { power: "450 PS", acceleration: "3.9 s", topSpeed: "280 km/h" },
     colours: [
@@ -125,7 +125,7 @@ const AUDI = {
 
 const MERC = {
   mamg: {
-    label: "Mercedes Benz",
+    label: "Mercedes Benz AMG-GT",
     basePrice: "€110,000",
     specs: { power: "476 PS", acceleration: "4.0 s", topSpeed: "295 km/h" },
     colours: [
@@ -140,7 +140,7 @@ const MERC = {
 
 const BMW = {
   bm: {
-    label: "BMW",
+    label: "BMW M3",
     basePrice: "€105,000",
     specs: { power: "510 PS", acceleration: "3.8 s", topSpeed: "290 km/h" },
     colours: [

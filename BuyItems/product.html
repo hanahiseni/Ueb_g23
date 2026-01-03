@@ -17,11 +17,10 @@
 
     <header>
 
-      <a href="cart.html" class="cart-btn" aria-label="Open cart">
-        <span class="cart-icon" aria-hidden="true">★</span>
-        <span class="cart-text">Favorites</span>
-        <span class="cart-badge" id="cartCount">0</span>
-      </a>
+        <a href="favorites.html" class="cart-btn" aria-label="Open favorites">
+        ★ Favorites
+        <span class="cart-badge" id="favCount">0</span>
+        </a>
 
 
     </header>
@@ -91,7 +90,7 @@
             <br>
             <div class="actions">
           <button
-                class="btn primary add-to-cart"
+                class="btn primary fav-btn"
                 type="button"
                 data-id="porsche_911"
                 data-title="Porsche 911"
@@ -151,7 +150,7 @@
             <br>
              <div class="actions">
             <button 
-             class=" btn primary add-to-cart"
+             class=" btn primary fav-btn"
              type="button"
              data-id="audi_rs6"
              data-title="Audi RS6"
@@ -210,7 +209,7 @@
             <br>
              <div class="actions">
               <button 
-             class=" btn primary add-to-cart"
+             class=" btn primary fav-btn"
              type="button"
              data-id="mercedes_s63"
              data-title="Mercedes S63"
@@ -268,7 +267,7 @@
             <br>
              <div class="actions">
               <button 
-             class=" btn primary add-to-cart"
+             class=" btn primary fav-btn"
              type="button"
              data-id="bmw_m3"
              data-title="BMW M3"
@@ -327,7 +326,7 @@
                     <br>
                      <div class="actions">
               <button 
-             class=" btn primary add-to-cart"
+             class=" btn primary fav-btn"
              type="button"
              data-id="lamborghini_huracan"
              data-title="Lamborghini Huracan"
@@ -387,7 +386,7 @@
                     <br>
                  <div class="actions">
          <button 
-             class=" btn primary add-to-cart"
+             class=" btn primary fav-btn"
              type="button"
              data-id="ferrari_f8_tributo"
              data-title="Ferrari F8 Tributo"
@@ -446,7 +445,7 @@
                     <br>
                          <div class="actions">
                       <button 
-                      class=" btn primary add-to-cart"
+                      class=" btn primary fav-btn"
                          type="button"
                         data-id="tesla_sPlaid"
                         data-title="Tesla Model S Plaid"
@@ -506,7 +505,7 @@
                     <br>
                     <div class="actions">
                       <button 
-                         class=" btn primary add-to-cart"
+                         class=" btn primary fav-btn"
                          type="button"
                         data-id="range_rover_sport"
                         data-title="Range Rover Sport"
@@ -566,7 +565,7 @@
                     <br>
                      <div class="actions">
                       <button 
-                     class=" btn primary add-to-cart"
+                     class=" btn primary fav-btn"
                     type="button"
                     data-id="porsche_caynnere_turbo"
                      data-title="Porsche Caynne Turbo"
@@ -625,7 +624,7 @@
                     <br>
                      <div class="actions">
                         <button 
-             class=" btn primary add-to-cart"
+             class=" btn primary fav-btn"
              type="button"
              data-id="audi_r8"
              data-title="Audi R8"
@@ -684,7 +683,7 @@
                     <br>
                     <div class="actions">
                         <button 
-             class=" btn primary add-to-cart"
+             class=" btn primary fav-btn"
              type="button"
              data-id="bmw_i8"
              data-title="BMW I8"
@@ -744,7 +743,7 @@
                     <br>
                  <div class="actions">
                         <button 
-             class=" btn primary add-to-cart"
+             class=" btn primary fav-btn"
              type="button"
              data-id="mercedes_amg_gt"
              data-title="Mercedes AMG GT"
@@ -763,7 +762,7 @@
                 <br>
                 <section class="compare-section"></section>
 
-<<<<<<< HEAD
+
   
 </section>
 
@@ -800,6 +799,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="transition.js"></script>
+<script src="favorites-list.js"></script>
+<script src="favorites-lib.js"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  renderFavBadge();
+
+  document.querySelectorAll(".fav-btn").forEach(btn => {
+    const id = btn.dataset.id;
+    btn.textContent = isFav(id) ? "Remove Favorite" : "Add to Favorites";
+  });
+});
+
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".fav-btn");
+  if (!btn) return;
+
+  const item = {
+    id: btn.dataset.id,
+    title: btn.dataset.title,
+    price: btn.dataset.price,
+    img: btn.dataset.img
+  };
+
+  toggleFav(item);
+
+  btn.textContent = isFav(item.id) ? "Remove Favorite" : "Add to Favorites";
+  renderFavBadge();
+});
+</script>
+
 
 
 </body>

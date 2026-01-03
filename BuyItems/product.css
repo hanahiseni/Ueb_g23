@@ -36,9 +36,14 @@
 
       .top-bar{
       width: 100%;
-      display: flex;
-      justify-content: space-between;
-       align-items: flex-start;
+      max-width: 1400px;     
+       margin: 0 auto;        
+        padding: 18px 24px;
+
+        display: flex;
+        justify-content: space-between; 
+        align-items: flex-start;
+     
       }
 
       .top-left{
@@ -63,21 +68,27 @@
         }
 
         .top-right {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: #a0a0a0;
+
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: #a0a0a0;
+        margin-left: 0;   
+          
         }
 
         .top-right select {
-            background: #14151b;
-            border-radius: 20px;
-            border: 1px solid #2b2d35;
-            padding: 6px 12px;
-            color: #f5f5f5;
-            font-size: 13px;
-            outline: none;
+              background: #14151b;
+              border-radius: 20px;
+              border: 1px solid #2b2d35;
+              padding: 6px 12px;
+              color: #f5f5f5;
+              font-size: 13px;
+              outline: none;
+              max-width: 180px;
+
+        
         }
 
         /* GRID */
@@ -515,6 +526,61 @@
 
 .back-btn:active{
   transform: translateY(0);
+}
+
+/* ===== CART / FAVORITES LIST (reused selectors) ===== */
+.cart-row{
+  display:flex;
+  align-items:center;
+  justify-content: flex-start;
+  gap: 24px;                   
+}
+.cart-item{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-width:0;
+}
+
+.cart-img{
+  width:92px;
+  height:56px;
+  object-fit:cover;
+  border-radius:12px;
+  flex:0 0 auto;
+}
+
+.cart-info{
+  min-width:0;
+}
+
+.cart-title{
+  font-weight:600;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.cart-sub{
+  font-size:12px;
+  opacity:0.75;
+}
+
+.cart-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+  margin:0;
+}
+
+/* Summary area reused */
+.cart-summary{
+  margin-top:18px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
 }
 
 

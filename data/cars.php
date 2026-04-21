@@ -1,5 +1,6 @@
 <?php
 
+$currency = "€";
 $brands = ["Porsche", "Audi", "Mercedes", "BMW"];
 
 $cars = [

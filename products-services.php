@@ -1,3 +1,16 @@
+<?php
+include "data/cars.php";
+include "functions/helpers.php";
+
+if (isset($_GET["sort"])) {
+    if ($_GET["sort"] == "price") {
+        sortCarsByPrice($cars);
+    } elseif ($_GET["sort"] == "brand") {
+        sortCarsByBrand($cars);
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,6 +82,18 @@ s
 </head>
 
 <body>
+  <h1>Our Cars</h1>
+
+<a href="products-services.php?sort=price">Sort by Price</a>
+<a href="products-services.php?sort=brand">Sort by Brand</a>
+
+<?php foreach ($cars as $car) { ?>
+  <div class="car-card">
+    <h2><?php echo $car["full_model"]; ?></h2>
+    <p><?php echo formatPrice($car["price"]); ?></p>
+    <p><?php echo $car["power"]; ?></p>
+  </div>
+<?php } ?>
 
   <div class="container">
 

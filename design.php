@@ -1,0 +1,156 @@
+<?php
+include "data/cars.php";
+
+$selectedBrand = "Porsche";
+$selectedColor = "";
+
+if (isset($_GET["brand"])) {
+    $selectedBrand = $_GET["brand"];
+}
+
+$currentCar = null;
+
+foreach ($cars as $car) {
+    if ($car["brand"] == $selectedBrand) {
+        $currentCar = $car;
+        break;
+    }
+}
+
+if ($currentCar === null) {
+    $currentCar = $cars[0];
+}
+
+if (isset($_GET["color"])) {
+    $selectedColor = $_GET["color"];
+} else {
+    $selectedColor = $currentCar["default_color"];
+}
+
+if (!isset($currentCar["colors"][$selectedColor])) {
+    $selectedColor = $currentCar["default_color"];
+}
+
+$currentImage = $currentCar["colors"][$selectedColor];
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Car Configurator – Porsche / Audi / Mercedes / BMW</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="design.css" />
+  <link rel="stylesheet" href="footer.css">
+  <link rel="icon" href="fotografi/logo.jpg">
+
+</head>
+
+
+<body>
+ <div class="nav">
+    <?php foreach ($brands as $brand) { ?>
+      <a href="design.php?brand=<?php echo urlencode($brand); ?>"><?php echo $brand; ?></a>
+    <?php } ?>
+  </div>
+
+  <section class="brand" id="<?php echo strtolower($currentCar['brand']); ?>">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <div class="headline">
+            <small>Configurator</small>
+            <h1>Configure your <b><?php echo $currentCar["brand"]; ?></b></h1>
+          </div>
+
+      <div class="controls">
+            <div>
+              <span class="label">Model</span>
+              <select onchange="window.location.href=this.value">
+                <?php foreach ($cars as $car) { ?>
+                  <option
+                    value="design.php?brand=<?php echo urlencode($car['brand']); ?>"
+                    <?php if ($car["brand"] == $currentCar["brand"]) echo "selected"; ?>
+                  >
+                    <?php echo $car["full_model"]; ?>
+                  </option>
+                <?php } ?>
+              </select>
+            </div>
+
+             <div>
+              <span class="label">Exterior colour</span>
+              <div class="swatches">
+                <?php foreach ($currentCar["colors"] as $colorName => $imagePath) { ?>
+                  <a href="design.php?brand=<?php echo urlencode($currentCar['brand']); ?>&color=<?php echo urlencode($colorName); ?>">
+                    <span class="color-circle <?php echo strtolower(str_replace(' ', '-', $colorName)); ?>"></span>
+                  </a>
+                <?php } ?>
+              </div>
+            </div>
+          </div>
+
+        <div class="summary">
+            <div>Model: <b><?php echo $currentCar["full_model"]; ?></b></div>
+            <div>Color: <b><?php echo $selectedColor; ?></b></div>
+          </div>
+        </div>
+
+                <div class="preview">
+          <div class="badge"><?php echo $currentCar["badge"]; ?></div>
+        
+
+          <div class="toprow">
+            <div class="title">
+              <small>Current configuration</small>
+                <h2><?php echo $currentCar["full_model"]; ?></h2>
+            </div>
+
+          <div class="price">
+              from
+              <strong>€<?php echo number_format($currentCar["price"]); ?></strong>
+            </div>
+          </div>
+     
+            <div class="imgwrap">
+            <img src="<?php echo $currentImage; ?>" alt="<?php echo $currentCar['full_model']; ?>" />
+          </div>
+
+               <div class="specs">
+             <div class="spec">
+              <div class="k">Power</div>
+              <div class="v"><?php echo $currentCar["power"]; ?></div>
+            </div>
+            <div class="spec">
+              <div class="k">0–100 km/h</div>
+              <div class="v"><?php echo $currentCar["acceleration"]; ?></div>
+            </div>
+            <div class="spec">
+              <div class="k">Top speed</div>
+              <div class="v"><?php echo $currentCar["top_speed"]; ?></div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <a class="btn secondary" href="design.php?brand=Porsche">Reset</a>
+       <a href="../BuyItems/buy.html?car=<?php echo strtolower($currentCar['brand']); ?>" class="btn">
+    Save configuration
+</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<footer class="site-footer">
+  © <span id="currentYear"></span> RevGT Corporation · All rights reserved
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="transition.js"></script>
+<script src="footer.js" defer></script>
+
+    </body>
+    </html>
+    

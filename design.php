@@ -1,5 +1,6 @@
 <?php
 include "data/cars.php";
+include "functions/helpers.php";
 
 $selectedBrand = "Porsche";
 $selectedColor = "";
@@ -109,7 +110,7 @@ $currentImage = $currentCar["colors"][$selectedColor];
 
           <div class="price">
               from
-              <strong>€<?php echo number_format($currentCar["price"]); ?></strong>
+              <strong>€<?php echo formatPrice($currentCar["price"]); ?></strong>
             </div>
           </div>
      

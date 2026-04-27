@@ -42,6 +42,6 @@ document.querySelectorAll('.buy-now').forEach(btn => {
     const id = btn.dataset.id;
   
    
-    window.location.assign(`buy.html?car=${encodeURIComponent(id)}`);
+    window.location.assign(`buy.php?car=${encodeURIComponent(id)}`);
   });
 });

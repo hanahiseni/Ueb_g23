@@ -71,6 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("checkoutBtn").addEventListener("click", () => {
    
-    window.location.href = "buy.html";
+    window.location.href = "buy.php";
   });
 });

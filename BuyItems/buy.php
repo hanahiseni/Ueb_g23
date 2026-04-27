@@ -1,116 +1,75 @@
+<?php
+require __DIR__ . '/../vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="buy.css">
-    <title>Check out - RevGT</title>
-    <link rel="icon" href="/fotografi/logo.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="buy.css">
+  <title>Check out - RevGT</title>
+  <link rel="icon" href="../fotografi/logo.jpg">
 </head>
+
 <body>
-    <div class="checkout-container">
-        <h2>Checkout</h2>
-        <form id="checkoutForm" novalidate>
+  <div class="checkout-container">
+    <h2>Checkout</h2>
 
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" placeholder="Please enter your name" required>
+    <form id="checkoutForm" action="process-purchase.php" method="POST">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Please enter your name" required>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email">
-            <label for="address">Address</label>
-            <input type="text" id="address" name="address" placeholder="Street, City, Country" required>
-       
-   
-        <label for="payment">Payment Method</label>
-        <select id="payment" name="payment">
-            <option value="credit">Credit / Debbit Card</option>
-            <option value="paypal">PayPal</option>
-            <option value="bank">Bank Transfer</option>
-        </select>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-          <input type="hidden" id="car" name="car">
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" placeholder="Street, City, Country" required>
 
-      <button type="button" id="confirmPurchaseBtn">Confirm Purchase</button>
+      <label for="payment">Payment Method</label>
+      <select id="payment" name="payment" required>
+        <option value="credit">Credit / Debit Card</option>
+        <option value="paypal">PayPal</option>
+        <option value="bank">Bank Transfer</option>
+      </select>
 
+      <input type="hidden" id="car" name="car">
+
+      <button type="submit">Confirm Purchase</button>
     </form>
+  </div>
 
-    
-    </div>
+  <script src="cart-lib.js"></script>
 
-    <script src="cart-lib.js"></script>
-   
-    <script>
-document.getElementById("confirmPurchaseBtn").addEventListener("click", function () {
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const address = document.getElementById("address").value.trim();
-  const payment = document.getElementById("payment").value;
-
-  
-  if (!name) {
-    alert("Full Name is required.");
-    return;
-  }
-
-  if (!email || !validateEmail(email)) {
-    alert("Please enter a valid email address.");
-    return;
-  }
-
-  if (!address) {
-    alert("Address is required.");
-    return;
-  }
-
-  if (!payment) {
-    alert("Please select a payment method.");
-    return;
-  }
-
-
-  alert("✅ Purchase confirmed! Thank you for choosing RevGT.");
-
- 
-  document.getElementById("checkoutForm").reset();
-
-  if (typeof clearCart === "function") {
-    clearCart();
-  }
-});
-
-function validateEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-</script>
-<script>
+  <script>
     document.addEventListener("DOMContentLoaded", () => {
-    const cart = loadCart();
-    if (!cart.length) {
-      // shfaq mesazh / ridrejto
-      console.log("Cart empty");
-      return;
-    }
-    console.log("Checkout cart:", cart, "total:", cartTotal(cart));
-    // Këtu e renderon checkout-in si do.
+      const params = new URLSearchParams(window.location.search);
+      const car = params.get("car");
+
+      if (car) {
+        document.getElementById("car").value = car;
+      }
+
+      if (typeof loadCart === "function") {
+        const cart = loadCart();
+
+        if (!cart.length) {
+          console.log("Cart empty");
+        } else {
+          console.log("Checkout cart:", cart);
+
+          if (typeof cartTotal === "function") {
+            console.log("Total:", cartTotal(cart));
+          }
+        }
+      }
     });
-    </script>
+  </script>
 
-    <script>
-    const params = new URLSearchParams(window.location.search);
-    const car = params.get('car');
-    if (car) {
-    document.getElementById('car').value = car;
-    }
-    function confirmPurchase() {
-    alert("✅ Purchase confirmed! Thank you for choosing Rev GT!");
-     }
-    </script>
-
-   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="transition.js"></script>
-
-</body>
-
-
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="transition.js"></script>
 </body>
 </html>

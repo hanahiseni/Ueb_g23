@@ -1,23 +1,11 @@
 <?php
 session_start();
 
-$users = [];
-
-$file = "users.txt";
-
-if (file_exists($file)) {
-    $lines = file($file, FILE_IGNORE_NEW_LINES);
-
-    foreach ($lines as $line) {
-        list($username, $password) = explode("|", $line);
-        $users[] = [
-            "username" => $username,
-            "password" => $password,
-            "role" => "user"
-        ];
-    }
-}
-
+$users = [
+    ["username" => "admin", "password" => "1234", "role" => "admin"],
+    ["username" => "user", "password" => "2344", "role" => "user"],
+    ["username" => "vesa", "password" => "vesa", "role" => "user"],
+];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match("/^[a-zA-Z][a-zA-Z0-9_]{2,19}$/", $_POST["username"])) {
         $error = "Invalid username format!";

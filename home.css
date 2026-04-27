@@ -126,9 +126,6 @@ body::after{
     .menu-toggle{
         display: block;
     }
-    .nav-links li a{
-        color: white;
-    }
 }
 
 html, body {

@@ -6,37 +6,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $error = "";
 
-    // 🔐 regex (si login yt)
+    // regex 
     if (!preg_match("/^[a-zA-Z][a-zA-Z0-9_]{2,19}$/", $username)) {
-        $error = "Invalid username format!";
-    } 
+        $error = "Invalid username!";
+    }
     elseif (!preg_match("/^.{4,}$/", $password)) {
         $error = "Password must be at least 4 characters!";
-    } 
+    }
     else {
 
         $file = "users.txt";
 
-        // kontrollo a ekziston useri
+        // kontrollo a ekziston
         if (file_exists($file)) {
-            $users = file($file, FILE_IGNORE_NEW_LINES);
+            $lines = file($file, FILE_IGNORE_NEW_LINES);
 
-            foreach ($users as $u) {
-                list($u_name, $u_pass) = explode("|", $u);
+            foreach ($lines as $line) {
+                list($u, $p) = explode("|", $line);
 
-                if ($username == $u_name) {
+                if ($username == $u) {
                     $error = "User already exists!";
                     break;
                 }
             }
         }
 
-        // nëse s’ka error → ruaje
+        // ruaje userin
         if (empty($error)) {
-            $data = $username . "|" . $password . "\n";
-            file_put_contents($file, $data, FILE_APPEND);
+            file_put_contents($file, $username . "|" . $password . "\n", FILE_APPEND);
 
-            echo "Account created! <a href='login.php'>Login</a>";
+            echo "<h2>Account created successfully!</h2>";
+            echo "<a href='login.php'>Go to login</a>";
             exit();
         }
     }
@@ -46,3 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
+<form method="POST">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Sign Up</button>
+</form>

@@ -95,3 +95,39 @@ body {
     transform: translateY(0);
   }
 }
+
+.success-box {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+
+  background: rgba(0, 255, 150, 0.1);
+  border: 1px solid rgba(0, 255, 150, 0.4);
+
+  color: #4dff88;
+
+  animation: fadeIn 0.5s ease;
+}
+
+.success-box p {
+  margin: 0 0 10px 0;
+  font-weight: 500;
+}
+
+.login-link {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+
+  background: linear-gradient(90deg, #4dff88, #00cc66);
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+.login-link:hover {
+  box-shadow: 0 5px 15px rgba(0, 255, 150, 0.5);
+  transform: translateY(-2px);
+}

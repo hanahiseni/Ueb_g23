@@ -1,10 +1,11 @@
 <?php
+$success = "";
+$error = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $username = trim($_POST["username"]);
     $password = trim($_POST["password"]);
-
-    $error = "";
 
     // regex 
     if (!preg_match("/^[a-zA-Z][a-zA-Z0-9_]{2,19}$/", $username)) {
@@ -17,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $file = "users.txt";
 
-        // kontrollo a ekziston
         if (file_exists($file)) {
             $lines = file($file, FILE_IGNORE_NEW_LINES);
 
@@ -35,13 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($error)) {
             file_put_contents($file, $username . "|" . $password . "\n", FILE_APPEND);
 
-            echo "<h2>Account created successfully!</h2>";
-            echo "<a href='login.php'>Go to login</a>";
-            exit();
+            $success = "Account created successfully!";
         }
     }
-
-  
 }
 ?>
 <!DOCTYPE html>
@@ -58,13 +54,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="login-box">
         <h2>Sign Up</h2>
 
+        <!-- FORM (fshihet kur sukses) -->
+        <?php if (empty($success)): ?>
         <form method="POST">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Sign Up</button>
         </form>
+        <?php endif; ?>
 
-        <?php if (!empty($error)) echo "<p class='error'>$error</p>"; ?>
+        <!-- ERROR -->
+        <?php if (!empty($error)): ?>
+            <p class="error"><?= $error ?></p>
+        <?php endif; ?>
+
+        <!-- SUCCESS -->
+        <?php if (!empty($success)): ?>
+            <div class="success-box">
+                <p>✅ <?= $success ?></p>
+                <a href="login.php" class="login-link">Go to Login</a>
+            </div>
+        <?php endif; ?>
+
     </div>
 </div>
 

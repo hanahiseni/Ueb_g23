@@ -21,32 +21,31 @@ session_start();
       <source src="./fotografi/kerri.mp4" type="video/mp4" />
     </video>
 
-    <nav class="navbar">
-      <div class="menu-toggle" id="menu-toggle">
-        <i class="fas fa-bars"></i>
-      </div>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="BuyItems/product.html">Products</a></li>
+<nav class="navbar">
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
 
-        <li><a href="design.html">Configurator</a></li>
-        <li><a href="contact.html">Contact</a></li>
-   <?php if(isset($_SESSION["user"])): ?>
-   <li><a>Welcome, <?php echo $_SESSION["user"]; ?></a></li>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="BuyItems/product.html">Products</a></li>
+    <li><a href="design.html">Configurator</a></li>
+    <li><a href="contact.html">Contact</a></li>
 
-    <?php if($_SESSION["role"] == "admin"): ?>
-        <li><a href="admin.php">Admin Panel</a></li>
+    <?php if(isset($_SESSION["user"])): ?>
+
+        <?php if($_SESSION["role"] == "admin"): ?>
+            <li><a href="admin.php">Admin Panel</a></li>
+        <?php endif; ?>
+
+        <li><a href="logout.php">Logout</a></li>
+
+    <?php else: ?>
+        <li><a href="login.php">Login</a></li>
     <?php endif; ?>
 
-    <li><a href="logout.php">Logout</a></li>
-
-<?php else: ?>
-    <li><a href="login.php">Login</a></li>
-<?php endif; ?>
-
-
-      </ul>
-    </nav>
+  </ul>
+</nav>
 
     <!-- <?php if(isset($_SESSION["user"])): ?>
 
@@ -60,6 +59,11 @@ session_start();
 
     <section class="hero">
       <h1>RevGT</h1>
+      <?php if(isset($_SESSION["user"])): ?>
+  <p class="welcome-text"> <strong>
+    Welcome, <?php echo $_SESSION["user"]; ?>
+</strong>  </p>
+<?php endif; ?>
       <h2>Electric Performance Redefined</h2>
       <p>Precision engineering. Minimal design. Maximum performance.</p>
       <a href="BuyItems/product.html" class="explore-btn">Explore models</a>

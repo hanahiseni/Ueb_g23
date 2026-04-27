@@ -1,20 +1,5 @@
 <?php
-
-include "oop.php";
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 include "data/cars.php";
-
-function formatPrice($price) {
-    return number_format($price, 0, '.', ',');
-}
-$brands = [];
-
-foreach ($cars as $car) {
-    $brands[] = $car["brand"];
-}
 
 
 $selectedBrand = "Porsche";
@@ -48,15 +33,8 @@ if (!isset($currentCar["colors"][$selectedColor])) {
 }
 
 $currentImage = $currentCar["colors"][$selectedColor];
-$carObj = new DiscountCar(
-    $currentCar["brand"],
-    $currentCar["full_model"],
-    $currentCar["price"],
-    10
-);
-
-$finalPrice = $carObj->getFinalPrice();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -132,9 +110,7 @@ $finalPrice = $carObj->getFinalPrice();
 
           <div class="price">
               from
-              <strong>€<?php echo formatPrice($finalPrice); ?></strong>
-            </div>
-          </div>
+<strong>€<?php echo number_format($currentCar["price"], 0, '.', ','); ?></strong>          </div>
      
             <div class="imgwrap">
             <img src="<?php echo $currentImage; ?>" alt="<?php echo $currentCar['full_model']; ?>" />
@@ -176,5 +152,4 @@ $finalPrice = $carObj->getFinalPrice();
 
     </body>
     </html>
-
     

@@ -1,11 +1,22 @@
 <?php
 session_start();
 
-$users = [
-    ["username" => "admin", "password" => "1234", "role" => "admin"],
-    ["username" => "user", "password" => "2344", "role" => "user"],
-    ["username" => "vesa", "password" => "vesa", "role" => "user"],
-];
+$users = [];
+
+$file = "users.txt";
+
+if (file_exists($file)) {
+    $lines = file($file, FILE_IGNORE_NEW_LINES);
+
+    foreach ($lines as $line) {
+        list($username, $password) = explode("|", $line);
+        $users[] = [
+            "username" => $username,
+            "password" => $password,
+            "role" => "user"
+        ];
+    }
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match("/^[a-zA-Z][a-zA-Z0-9_]{2,19}$/", $_POST["username"])) {
@@ -53,12 +64,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2>Login</h2>
 
         <form method="POST">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
 
-            <input type="text" name="username" placeholder="Username" required>
+    <button type="submit">Login</button>
+</form>
 
-            <input type="password" name="password" placeholder="Password" required>
-
-            <button type="submit">Login</button>
+<p style="margin-top:15px; color:#aaa; font-size:14px;">
+    Don’t have an account?
+    <a href="signup.html" style="color:#fff; text-decoration: underline;">
+        Sign up
+    </a>
+</p>
 
         </form>
 

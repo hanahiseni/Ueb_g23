@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- SUCCESS -->
         <?php if (!empty($success)): ?>
             <div class="success-box">
-                <p>✅ <?= $success ?></p>
+                <p> <?= $success ?></p>
                 <a href="login.php" class="login-link">Go to Login</a>
             </div>
         <?php endif; ?>

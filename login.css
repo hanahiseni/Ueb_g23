@@ -66,8 +66,8 @@ body {
 }
 
 .login-box input:focus {
-  border: 1px solid #761a1a;
-  box-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+  border: 1px solid white;
+  box-shadow: 0 0 8px white;
   outline: none;
 }
 
@@ -79,8 +79,8 @@ body {
   border: none;
   border-radius: 10px;
 
-  background: linear-gradient(90deg, #ff0000, #ff4d4d);
-  color: white;
+  background: linear-gradient(90deg, white);
+  color: black;
   font-weight: 600;
 
   cursor: pointer;
@@ -89,7 +89,7 @@ body {
 
 .login-box button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+  box-shadow: 0 10px 20px white;
 }
 
 .error {

@@ -1,6 +1,5 @@
 <?php
 
-<?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -42,7 +41,6 @@ if (!isset($currentCar["colors"][$selectedColor])) {
 
 $currentImage = $currentCar["colors"][$selectedColor];
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

@@ -13,11 +13,11 @@ $cars = [
         "power" => "394 PS",
         "acceleration" => "4.1 s",
         "top_speed" => "294 km/h",
-        "default_color" => "Red",
+        "default_color" => "Gray",
         "colors" => [
-            "Red"    => "fotografi/porsche1.png",
-            "Gray"   => "fotografi/porsche2.png",
-            "White"  => "fotografi/porsche 3.png",
+            "Gray"   => "fotografi/porsche1.png",
+            "White"  => "fotografi/porsche2.png",
+            "Red"    => "fotografi/porsche 3.png",
             "Blue"   => "fotografi/porsche 4.png",
             "Purple" => "fotografi/porsche 5.png"
         ]

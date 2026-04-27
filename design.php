@@ -141,7 +141,7 @@ $currentImage = $currentCar["colors"][$selectedColor];
 
           <div class="actions">
             <a class="btn secondary" href="design.php?brand=Porsche">Reset</a>
-       <a href="../BuyItems/buy.html?car=<?php echo strtolower($currentCar['brand']); ?>" class="btn">
+       <a href="../BuyItems/buy.php?car=<?php echo strtolower($currentCar['brand']); ?>" class="btn">
     Save configuration
 </a>
           </div>

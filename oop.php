@@ -1,47 +1,49 @@
-<?php 
-class Product {
-    private $name;
+<?php
+class Car {
+    private $brand;
+    private $model;
     private $price;
 
-    public function__construct($name, $price)
-    {
-        $this->name=$name;
-        $this->price=$price;
-    }
-    public function getName() {
-        return $this->name;
-    }
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-    public function getPrice()
-    {
-        return $this->price;
+    // Konstruktor
+    public function __construct($brand, $model, $price) {
+        $this->brand = $brand;
+        $this->model = $model;
+        $this->price = $price;
     }
 
-    public function setPrice($price){
-        $this->price=$price;
-    }
-}
-
-class CarProduct extends Product {
-    private $brand;
-    public function__construct($name, $price $brand) {
-        parent::__construct($name, $price);
-        $this->brand=$brand;
-    }
+    // Getter
     public function getBrand() {
         return $this->brand;
     }
-    public function setBrand($brand) {
-        $this->brand=$brand;
+
+    public function getModel() {
+        return $this->model;
+    }
+
+    public function getPrice() {
+        return $this->price;
+    }
+
+    // Setter
+    public function setPrice($price) {
+        $this->price = $price;
     }
 }
-$car = new CarProduct("BMW Car", 25000, "BMW");
-echo "<h2> OOP NE PHP</h2>";
-echo "<p>Produkti:" .$car->getName()."</p>";
-echo "<p>Çmimi: " . $car->getPrice() . " €</p>";
-echo "<p>Brendi:".$car->getBrand()."</p>";
+
+
+class DiscountCar extends Car {
+    private $discount;
+
+    public function __construct($brand, $model, $price, $discount) {
+        parent::__construct($brand, $model, $price);
+        $this->discount = $discount;
+    }
+
+    public function getFinalPrice() {
+        $price = $this->getPrice();
+        return $price - ($price * $this->discount / 100);
+    }
+}
+
 
 ?>

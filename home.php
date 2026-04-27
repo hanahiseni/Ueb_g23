@@ -77,5 +77,69 @@ session_start();
     <script src="transition.js"></script>
     <script src="home.js"></script>
     <script src="footer.js" defer></script>
+    <section>
+    <h2>Shembull me vargje në PHP</h2>
+
+    <?php
+    $vlerat = [7, 4, 6, 1, 9, 2];
+
+    array_unshift($vlerat, 12);
+    array_push($vlerat, "start");
+
+    array_pop($vlerat);
+    array_shift($vlerat);
+
+    if (count($vlerat) > 5) {
+        rsort($vlerat);
+    }
+
+    if (isset($vlerat[0])) {
+        if ($vlerat[0] < 5) {
+            echo "<p>Indeksi 0 ka vlerë më të vogël se 5</p>";
+        } else {
+            echo "<p>Indeksi 0 ka vlerë më të madhe ose të barabartë me 5</p>";
+        }
+    } else {
+        echo "<p>Indeksi 0 nuk ekziston</p>";
+    }
+
+    echo "<pre>";
+    print_r($vlerat);
+    echo "</pre>";
+    ?>
+</section>
+
+<section>
+    <h2>Shembull me vargje në PHP</h2>
+
+    <?php
+    $vlerat = [7, 4, 6, 1, 9, 2];
+
+    array_unshift($vlerat, 12);
+    array_push($vlerat, "start");
+
+    array_pop($vlerat);
+    array_shift($vlerat);
+
+    if (count($vlerat) > 5) {
+        rsort($vlerat);
+    }
+
+    if (isset($vlerat[0])) {
+        if ($vlerat[0] < 5) {
+            echo "<p>Indeksi 0 ka vlerë më të vogël se 5</p>";
+        } else {
+            echo "<p>Indeksi 0 ka vlerë më të madhe ose të barabartë me 5</p>";
+        }
+    } else {
+        echo "<p>Indeksi 0 nuk ekziston</p>";
+    }
+
+    echo "<pre>";
+    print_r($vlerat);
+    echo "</pre>";
+    ?>
+</section>
+
   </body>
 </html>

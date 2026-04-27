@@ -67,3 +67,16 @@ RevGT/
 ├── signup.php
 ├── README.md
 └── index.php
+
+disa demonstrime me foto:
+
+
+## Pamje nga Projekti
+
+![Foto 1](foto/1.png)
+
+![Foto 2](foto/2.png)
+
+![Foto 3](foto/3.png)
+
+![Foto 4](foto/4.png)

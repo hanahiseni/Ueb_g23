@@ -26,8 +26,8 @@ session_start();
         <i class="fas fa-bars"></i>
       </div>
       <ul class="nav-links" id="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="BuyItems/product.html">Products</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="BuyItems/product.php">Products</a></li>
 
         <li><a href="design.html">Configurator</a></li>
         <li><a href="contact.html">Contact</a></li>

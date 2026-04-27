@@ -75,7 +75,7 @@
         <article class="vehicle-card">
             <div class="vehicle-image">
                
-                 <img src="/fotografi/porsche1.jpg" alt="Porsche 911"> 
+                 <img src="../fotografi/porsche1.jpg" alt="Porsche 911"> 
                
             </div>
 
@@ -119,7 +119,7 @@
                 data-id="porsche_911"
                 data-title="Porsche 911"
                 data-price="1599.00"
-                data-img="/fotografi/porsche1.jpg"
+                data-img="../fotografi/porsche1.jpg"
             > Add to Favorites </button>
 
           
@@ -137,7 +137,7 @@
           <!-- AUDI RS6 -->
         <article class="vehicle-card">
             <div class="vehicle-image">
-                <img src="/fotografi/audi.png" alt="Audi RS6">
+                <img src="../fotografi/audi.png" alt="Audi RS6">
                 
             </div>
 
@@ -179,7 +179,7 @@
              data-id="audi_rs6"
              data-title="Audi RS6"
              data-price="1320.00"
-             data-img="/fotografi/audi.png"
+             data-img="../fotografi/audi.png"
              >Add to Favorites</button>
 
              
@@ -196,7 +196,7 @@
         <!-- MERCEDES S63 -->
         <article class="vehicle-card">
             <div class="vehicle-image">
-                 <img src="/fotografi/mercedes.png" alt="Mercedes S63">
+                 <img src="../fotografi/mercedes.png" alt="Mercedes S63">
                 
             </div>
 
@@ -238,7 +238,7 @@
              data-id="mercedes_s63"
              data-title="Mercedes S63"
              data-price="1450.00"
-             data-img="/fotografi/mercedes.png"
+             data-img="../fotografi/mercedes.png"
              >Add to Favorites</button>
 
             <button
@@ -254,7 +254,7 @@
         <!-- BMW M3 -->
         <article class="vehicle-card">
             <div class="vehicle-image">
-                <img src="/fotografi/bmw.png" alt="BMW M3">
+                <img src="../fotografi/bmw.png" alt="BMW M3">
                 
             </div>
 
@@ -296,7 +296,7 @@
              data-id="bmw_m3"
              data-title="BMW M3"
              data-price="1250.00"
-             data-img="/fotografi/bmw.png"
+             data-img="../fotografi/bmw.png"
              >Add to Favorites</button>
 
              <button
@@ -310,7 +310,7 @@
             <!--Lamborghini Huracan-->
             <article class="vehicle-card">
                 <div class="vehicle-image">
-                    <img src="/fotografi/lamborghini.png" alt="Lamborghini Huracan">
+                    <img src="../fotografi/lamborghini.png" alt="Lamborghini Huracan">
                 </div>
 
                 <div class="vehicle-header">
@@ -355,7 +355,7 @@
              data-id="lamborghini_huracan"
              data-title="Lamborghini Huracan"
              data-price="1890.00"
-             data-img="/fotografi/lamborghini.png"
+             data-img="../fotografi/lamborghini.png"
              >Add to Favorites</button> 
 
              <button
@@ -370,7 +370,7 @@
                  <!--Ferrari F8 Tributo-->
             <article class="vehicle-card">
                 <div class="vehicle-image">
-                    <img src="/fotografi/ferrari.png" alt="Ferrari F8 Tributo">
+                    <img src="../fotografi/ferrari.png" alt="Ferrari F8 Tributo">
                 </div>
 
                 <div class="vehicle-header">
@@ -415,7 +415,7 @@
              data-id="ferrari_f8_tributo"
              data-title="Ferrari F8 Tributo"
              data-price="1970.00"
-             data-img="/fotografi/ferrari.png"
+             data-img="../fotografi/ferrari.png"
              >Add to Favorites</button>
 
              <button
@@ -429,7 +429,7 @@
                  <!--Tesla Model S Plaid-->
             <article class="vehicle-card">
                 <div class="vehicle-image">
-                    <img src="/fotografi/tesla.png" alt="Tesla Model S Plaid">
+                    <img src="../fotografi/tesla.png" alt="Tesla Model S Plaid">
                 </div>
 
                 <div class="vehicle-header">
@@ -474,7 +474,7 @@
                         data-id="tesla_sPlaid"
                         data-title="Tesla Model S Plaid"
                         data-price="1480.00"
-                        data-img="/fotografi/tesla.png"
+                        data-img="../fotografi/tesla.png"
                         >Add to Favorites</button>
 
                       <button
@@ -489,7 +489,7 @@
                     <!--Range Rover Sport-->
             <article class="vehicle-card">
                 <div class="vehicle-image">
-                    <img src="/fotografi/range rover sport.png" alt="Range Rover Sport">
+                    <img src="../fotografi/range_rover_sport.png" alt="Range Rover Sport">
                 </div>
 
                 <div class="vehicle-header">
@@ -534,7 +534,7 @@
                         data-id="range_rover_sport"
                         data-title="Range Rover Sport"
                         data-price="1320.00"
-                        data-img="/fotografi/range rover sport.png"
+                        data-img="../fotografi/range_rover_sport.png"
                         >Add to Favorites</button>
 
                          <button
@@ -549,7 +549,7 @@
                     <!--Porsche Cayenne Turbo-->
             <article class="vehicle-card">
                 <div class="vehicle-image">
-                    <img src="/fotografi/porsche_caynnere_turbo.png" alt="Porsche Cayenne Turbo">
+                    <img src="../fotografi/porsche_caynnere_turbo.png" alt="Porsche Cayenne Turbo">
                 </div>
 
                 <div class="vehicle-header">
@@ -594,7 +594,7 @@
                     data-id="porsche_caynnere_turbo"
                      data-title="Porsche Caynne Turbo"
                       data-price="1440.00"
-                     data-img="/fotografi/porsche_caynnere_turbo.png"
+                     data-img="../fotografi/porsche_caynnere_turbo.png"
                       >Add to Favorites</button>
 
                      <button
@@ -608,7 +608,7 @@
                     <!--Auid R8-->
             <article class="vehicle-card">
                 <div class="vehicle-image">
-                    <img src="/fotografi/audi_r8.png" alt="Audi R8">
+                    <img src="../fotografi/audi_r8.png" alt="Audi R8">
                 </div>
 
                 <div class="vehicle-header">
@@ -653,7 +653,7 @@
              data-id="audi_r8"
              data-title="Audi R8"
              data-price="1880.00"
-             data-img="/fotografi/audi_r8.png"
+             data-img="../fotografi/audi_r8.png"
              >Add to Favorites</button>
 
                 <button
@@ -667,7 +667,7 @@
                     <!--BMW i8-->
             <article class="vehicle-card">
                 <div class="vehicle-image">
-                    <img src="/fotografi/bmw_i8.png" alt="BMW i8">
+                    <img src="../fotografi/bmw_i8.png" alt="BMW i8">
                 </div>
 
                 <div class="vehicle-header">
@@ -712,7 +712,7 @@
              data-id="bmw_i8"
              data-title="BMW I8"
              data-price="1650.00"
-             data-img="/fotografi/bmw_i8.png"
+             data-img="../fotografi/bmw_i8.png"
              >Add to Favorites</button>
 
                     <button
@@ -727,7 +727,7 @@
                     <!--Mercedes AMG GT-->
             <article class="vehicle-card">
                 <div class="vehicle-image">
-                    <img src="/fotografi/mercedes_amg_gt.png" alt="Mercedes AMG GT">
+                    <img src="../fotografi/mercedes_amg_gt.png" alt="Mercedes AMG GT">
                 </div>
 
                 <div class="vehicle-header">
@@ -772,7 +772,7 @@
              data-id="mercedes_amg_gt"
              data-title="Mercedes AMG GT"
              data-price="1730.00"
-             data-img="/fotografi/mercedes_amg_gt.png"
+             data-img="../fotografi/mercedes_amg_gt.png"
              >Add to Favorites</button>
 
                 <button

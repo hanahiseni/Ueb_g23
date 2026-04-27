@@ -8,18 +8,27 @@ $users = [
 ];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    foreach ($users as $u) {
-        if ($_POST["username"] == $u["username"] && $_POST["password"] == $u["password"]) {
+    if (!preg_match("/^[a-zA-Z][a-zA-Z0-9_]{2,19}$/", $_POST["username"])) {
+        $error = "Invalid username format!";
+    } 
+    elseif (!preg_match("/^.{4,}$/", $_POST["password"])) {
+        $error = "Password must be at least 4 characters long!";
+    } 
+    else {
 
-            $_SESSION["user"] = $u["username"];
-            $_SESSION["role"] = $u["role"];
+        foreach ($users as $u) {
+            if ($_POST["username"] == $u["username"] && $_POST["password"] == $u["password"]) {
 
-            header("Location: home.php");
-            exit();
+                $_SESSION["user"] = $u["username"];
+                $_SESSION["role"] = $u["role"];
+
+                header("Location: home.php");
+                exit();
+            }
         }
-    }
 
-    $error = "Wrong credentials!";
+        $error = "Wrong credentials!";
+    }
 }
 ?>
 
@@ -44,13 +53,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2>Login</h2>
 
         <form method="POST">
+
             <input type="text" name="username" placeholder="Username" required>
+
             <input type="password" name="password" placeholder="Password" required>
 
             <button type="submit">Login</button>
+
         </form>
 
-        <?php if(isset($error)) echo "<div class='error'>$error</div>"; ?>
+        <?php if(isset($error)) echo "<div class='error' style='margin-top:15px;color:#ff4d4d;font-weight:500;'>$error</div>"; ?>
+
     </div>
 </div>
 

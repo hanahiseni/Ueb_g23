@@ -287,3 +287,18 @@ a.btn {
     color:#0f172a;
     border:1px solid rgba(15,23,42, .12);
 }
+.imgwrap {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgwrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}

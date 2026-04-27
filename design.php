@@ -1,6 +1,14 @@
 <?php
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 include "data/cars.php";
-include "functions/helpers.php";
+
+function formatPrice($price) {
+    return number_format($price, 0, '.', ',');
+}
 
 $selectedBrand = "Porsche";
 $selectedColor = "";

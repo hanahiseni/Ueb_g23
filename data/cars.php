@@ -4,8 +4,6 @@ $currency = "€";
 $brands = ["Porsche", "Audi", "Mercedes", "BMW"];
 
 $cars = [
-
-    // PORSCHE
     [
         "brand" => "Porsche",
         "model" => "911",
@@ -16,18 +14,15 @@ $cars = [
         "acceleration" => "4.1 s",
         "top_speed" => "294 km/h",
         "default_color" => "Red",
-
-        // rendi = UI
         "colors" => [
-            "Red"    => "fotografi/porshce1.png",
-            "Gray"   => "fotografi/porshce2.png",
+            "Red"    => "fotografi/porsche1.png",
+            "Gray"   => "fotografi/porsche2.png",
             "White"  => "fotografi/porsche 3.png",
             "Blue"   => "fotografi/porsche 4.png",
             "Purple" => "fotografi/porsche 5.png"
         ]
     ],
 
-    // AUDI
     [
         "brand" => "Audi",
         "model" => "RS7",
@@ -38,7 +33,6 @@ $cars = [
         "acceleration" => "3.6 s",
         "top_speed" => "305 km/h",
         "default_color" => "Black",
-
         "colors" => [
             "Black"  => "fotografi/audi 1.png",
             "White"  => "fotografi/audi 2.png",
@@ -48,7 +42,6 @@ $cars = [
         ]
     ],
 
-    // MERCEDES
     [
         "brand" => "Mercedes",
         "model" => "Benz AMG-GT",
@@ -59,7 +52,6 @@ $cars = [
         "acceleration" => "3.2 s",
         "top_speed" => "315 km/h",
         "default_color" => "Black",
-
         "colors" => [
             "Black" => "fotografi/mercedes 1.png",
             "White" => "fotografi/mercedes 2.png",
@@ -69,7 +61,6 @@ $cars = [
         ]
     ],
 
-    // BMW
     [
         "brand" => "BMW",
         "model" => "M3",
@@ -80,7 +71,6 @@ $cars = [
         "acceleration" => "3.8 s",
         "top_speed" => "290 km/h",
         "default_color" => "White",
-
         "colors" => [
             "Black" => "fotografi/bmw 1.png",
             "White" => "fotografi/bmw 2.png",
@@ -89,5 +79,4 @@ $cars = [
             "Pink"  => "fotografi/bmw 5.png"
         ]
     ]
-
 ];

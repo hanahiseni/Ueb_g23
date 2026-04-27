@@ -1,10 +1,10 @@
 <?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'PHPMailer/PHPMailer-master/src/PHPMailer.php';
-require 'PHPMailer/PHPMailer-master/src/SMTP.php';
-require 'PHPMailer/PHPMailer-master/src/Exception.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 

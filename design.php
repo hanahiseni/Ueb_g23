@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -54,9 +55,16 @@ $currentImage = $currentCar["colors"][$selectedColor];
   <meta charset="UTF-8" />
   <title>Car Configurator – Porsche / Audi / Mercedes / BMW</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="stylesheet" href="design.css" />
   <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="cookies.css">
   <link rel="icon" href="fotografi/logo.jpg">
+
+  <script>
+    window.REVGT_USER = "<?php echo isset($_SESSION['user']) ? htmlspecialchars($_SESSION['user'], ENT_QUOTES) : 'guest'; ?>";
+  </script>
+  <script src="cookies.js" defer></script>
   <script src="design.js" defer></script>
 </head>
 
@@ -133,10 +141,12 @@ $currentImage = $currentCar["colors"][$selectedColor];
               <div class="k">Power</div>
               <div class="v"><?php echo $currentCar["power"]; ?></div>
             </div>
+
             <div class="spec">
               <div class="k">0–100 km/h</div>
               <div class="v"><?php echo $currentCar["acceleration"]; ?></div>
             </div>
+
             <div class="spec">
               <div class="k">Top speed</div>
               <div class="v"><?php echo $currentCar["top_speed"]; ?></div>

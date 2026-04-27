@@ -27,15 +27,15 @@
   </div>
 
 <nav class="menu">
-  <a href="home.html">Home</a>
+  <a href="home.php">Home</a>
 
   <div class="dropdown">
     <span class="dropbtn">Services</span>
 
     <div class="dropmenu">
-      <a href="BuyItems/product.html">Products</a>
-      <a href="BuyItems\buy.html">Buy Car</a>
-      <a href="design.html">Customize Car</a>
+      <a href="BuyItems/product.php">Products</a>
+      <a href="BuyItems/buy.php">Buy Car</a>
+      <a href="design.php">Customize Car</a>
     </div>
   </div>
 
@@ -64,30 +64,30 @@
     <section class="section" id="what_we_do">
         <h3>What We Do</h3>
         <div class="grid">
-            <a href="BuyItems/buy.html" class="card">
+            <a href="BuyItems/buy.php" class="card">
             <img src="fotografi/mercedes.png" alt="Car sales">
             <div class="card-container">
                 <h4>Exclusive Car Sales</h4>
                 <p>We bring top-tier vehicles to the market - from luxury rides to performance beasts - ready to own the road.</p>
-                <a href="BuyItems/buy.html" class="btn">View Cars</a>
+                <a href="BuyItems/buy.php" class="btn">View Cars</a>
             </div>
             </a>
 
-            <a href="design.html" class="card">
+            <a href="design.php" class="card">
                 <img src="bmw2 (2).png" alt="Car styling">
                 <div class="card-container">
                     <h4>Styling & Tuning</h4>
                     <p>Custom styling, detailing, and performance tuning that redifines your car's identity.</p>
-                    <a href="design.html" class="btn">Configure Now</a>
+                    <a href="design.php" class="btn">Configure Now</a>
                 </div>
             </a>
 
-            <a href="BuyItems/product.html" class="card">
+            <a href="BuyItems/product.php" class="card">
                 <img src="fotografi/audi2.png" alt="Tech">
                 <div class="card-container">
                     <h4>Smart Car Tech</h4>
                     <p>Integrating modern tech - infotainment upgrades and performance data systems - keeping your car ahead of the curve.</p>
-                    <a href="BuyItems/product.html" class="btn">View More</a>
+                    <a href="BuyItems/product.php" class="btn">View More</a>
                 </div>
             </a>
         </div>
@@ -143,14 +143,14 @@
             <div class="footer-links">
                 <div>
                     <h4>Company</h4>
-                    <a href="about.html">About</a>
+                    <a href="about.php">About</a>
                     <a href="#">Careers</a>
                     <a href="contact.html">Contact</a>
                 </div>
                 <div>
                     <h4>Quick Links</h4>
-                    <a href="BuyItems/product.html">Our cars</a>
-                    <a href="design.html">Services</a>
+                    <a href="BuyItems/product.php">Our cars</a>
+                    <a href="design.php">Services</a>
                     <a href="#">Gallery</a>
                 </div>
                 <div>

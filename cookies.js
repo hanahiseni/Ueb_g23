@@ -1,7 +1,16 @@
-function setCookie(name, value, days) {
-  const d = new Date();
-  d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
-  document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
+function safeCookieName(name) {
+  return encodeURIComponent(name || "guest");
+}
+
+const currentUser = window.REVGT_USER || "guest";
+const userKey = safeCookieName(currentUser);
+
+const consentCookie = `cookieConsent_${userKey}`;
+const analyticsCookie = `analytics_${userKey}`;
+const marketingCookie = `marketing_${userKey}`;
+
+function setCookie(name, value) {
+  document.cookie = `${name}=${value};path=/`;
 }
 
 function getCookie(name) {
@@ -11,35 +20,26 @@ function getCookie(name) {
     ?.split("=")[1];
 }
 
-/* ===== DYNAMIC LOGIC ===== */
 function applyCookieSettings() {
-  const analytics = getCookie("analytics");
-  const marketing = getCookie("marketing");
+  const analytics = getCookie(analyticsCookie);
+  const marketing = getCookie(marketingCookie);
 
   if (analytics === "true") {
-    console.log("Analytics ENABLED");
-
-    const script = document.createElement("script");
-    script.innerHTML = `console.log("Analytics script loaded")`;
-    document.head.appendChild(script);
+    console.log("Analytics ENABLED for", currentUser);
   }
 
   if (marketing === "true") {
-    console.log("Marketing ENABLED");
+    console.log("Marketing ENABLED for", currentUser);
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
   console.log("Cookies script loaded");
 
-  
-  /*
-  if (getCookie("cookieConsent")) {
+  if (getCookie(consentCookie)) {
     applyCookieSettings();
     return;
   }
-  */
 
   const overlay = document.createElement("div");
   overlay.className = "cookie-overlay";
@@ -60,9 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(banner);
 
   banner.querySelector("#accept").onclick = () => {
-    setCookie("cookieConsent", "accepted", 30);
-    setCookie("analytics", "true", 30);
-    setCookie("marketing", "true", 30);
+    setCookie(consentCookie, "accepted");
+    setCookie(analyticsCookie, "true");
+    setCookie(marketingCookie, "true");
 
     overlay.remove();
     banner.remove();
@@ -71,9 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   banner.querySelector("#reject").onclick = () => {
-    setCookie("cookieConsent", "rejected", 30);
-    setCookie("analytics", "false", 30);
-    setCookie("marketing", "false", 30);
+    setCookie(consentCookie, "rejected");
+    setCookie(analyticsCookie, "false");
+    setCookie(marketingCookie, "false");
 
     overlay.remove();
     banner.remove();
@@ -118,9 +118,9 @@ function openCustomizeModal(overlay) {
     const analytics = modal.querySelector("#analytics").checked;
     const marketing = modal.querySelector("#marketing").checked;
 
-    setCookie("analytics", analytics, 30);
-    setCookie("marketing", marketing, 30);
-    setCookie("cookieConsent", "custom", 30);
+    setCookie(consentCookie, "custom");
+    setCookie(analyticsCookie, analytics);
+    setCookie(marketingCookie, marketing);
 
     modal.remove();
     overlay.remove();

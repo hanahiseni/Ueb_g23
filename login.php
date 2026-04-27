@@ -58,11 +58,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <button type="submit">Login</button>
 </form>
 
-<p style="margin-top:15px; color:#aaa; font-size:14px;">
-    Don’t have an account?
-    <a href="signup.html" style="color:#fff; text-decoration: underline;">
-        Sign up
-    </a>
+<p style="margin-top:15px; color:#aaa;">
+    Don't have an account?
+    <a href="signup.php" style="color:#fff;">Sign up</a>
 </p>
 
         </form>

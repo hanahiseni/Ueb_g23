@@ -1,154 +1,152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <title>RevGT | Contact</title>
+  <head>
+    <title>RevGT | Contact</title>
 
-  <link rel="stylesheet" href="contact.css">
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link rel="stylesheet" href="footer.css">
-</head>
+    <link rel="stylesheet" href="contact.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="footer.css" />
+  </head>
 
-<body>
-
-<header class="nav">
-  <div class="logo">
-    <img src="fotografi/revgt.png" alt="RevGT logo">
-    <span>RevGT</span>
-  </div>
-
-  <nav class="nav-links">
-    <a href="home.html">Home</a>
-    <a href="about.html">About</a>
-
-    <div class="dropdown">
-      <a href="#" class="dropbtn">Services</a>
-      <div class="dropmenu">
-        <a href="BuyItems/product.html">Products</a>
-        <a href="BuyItems\buy.html">Buy Car</a>
-        <a href="design.html">Customize Car</a>
+  <body>
+    <header class="nav">
+      <div class="logo">
+        <img src="fotografi/revgt.png" alt="RevGT logo" />
+        <span>RevGT</span>
       </div>
+
+      <nav class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+
+        <div class="dropdown">
+          <a href="#" class="dropbtn">Services</a>
+          <div class="dropmenu">
+            <a href="BuyItems/product.html">Products</a>
+            <a href="BuyItems\buy.html">Buy Car</a>
+            <a href="design.html">Customize Car</a>
+          </div>
+        </div>
+        <li><a href="logout.php">Logout</a></li>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Precision starts with conversation.</h1>
+      <div>
+        If you're ready to move beyond limits, we're ready to build with you.
+        <a href="#contact"> Contact us</a>
+      </div>
+    </section>
+
+    <section class="request">
+      <h2>Send a Request</h2>
+      <p>Tell us what you need — we'll handle the rest.</p>
+
+      <form
+        id="contactForm"
+        class="request-form"
+        action="contact.php"
+        method="POST"
+      >
+        <div class="row">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Full name"
+            required
+          />
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email address"
+            required
+          />
+        </div>
+
+        <div class="row">
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Phone number"
+            required
+          />
+
+          <select id="location" name="location" required>
+            <option value="">Pickup location</option>
+            <option value="airport">Prishtina Airport, Lipjan</option>
+            <option value="hotel">Grand Hotel Prishtina</option>
+          </select>
+        </div>
+
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Your request"
+          required
+        ></textarea>
+
+        <button type="submit">Submit Request</button>
+
+        <p id="formStatus" style="margin-top: 16px; font-size: 14px"></p>
+      </form>
+    </section>
+    <div class="map-wrapper">
+      <iframe
+        src="https://www.google.com/maps?q=Prishtina+International+Airport+Adem+Jashari&output=embed"
+        width="100%"
+        height="400"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      >
+      </iframe>
     </div>
 
-    
-  </nav>
-</header>
-
-    
-<section class="hero">
-  <h1>Precision starts with conversation.</h1>
-  <div>
-    If you're ready to move beyond limits, we're ready to build with you.
-    <a href="#contact"> Contact us</a>
-  </div>
-</section>
-
-<section class="request">
-  <h2>Send a Request</h2>
-  <p>Tell us what you need — we'll handle the rest.</p>
-
-  <form id="contactForm" class="request-form" action="contact.php" method="POST">
-
-  <div class="row">
-    <input
-      type="text"
-      id="name"
-      name="name"
-      placeholder="Full name"
-      required
-    />
-
-    <input
-      type="email"
-      id="email"
-      name="email"
-      placeholder="Email address"
-      required
-    />
-  </div>
-
-  <div class="row">
-    <input
-      type="tel"
-      id="phone"
-      name="phone"
-      placeholder="Phone number"
-      required
-    />
-
-    <select id="location" name="location" required>
-      <option value="">Pickup location</option>
-      <option value="airport">Prishtina Airport, Lipjan</option>
-      <option value="hotel">Grand Hotel Prishtina</option>
-    </select>
-  </div>
-
-  <textarea
-    id="message"
-    name="message"
-    placeholder="Your request"
-    required
-  ></textarea>
-
-  <button type="submit">Submit Request</button>
-
-  <p id="formStatus" style="margin-top:16px; font-size:14px;"></p>
-
-</form>
-</section>
-<div class="map-wrapper">
-  <iframe
-    src="https://www.google.com/maps?q=Prishtina+International+Airport+Adem+Jashari&output=embed"
-    width="100%"
-    height="400"
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
-
-
-<div class="location-text">
-<p style="padding-left:40px;">Visits by appointment only</p>
-
-</div>
-
-
-<footer id = "contact">
-    <h3> Contact details </h3>
-
-    <p><strong>Office: </strong> Prishtinë, Kosovo</p>
-    <p><strong>Email: </strong> support@revgt.com · bookings@revgt.com </p>
-    <p><strong>Phone:</strong> +383 44 123 502</p>
-    <p><strong>Hours:</strong> Mon-Sat · 09:00-18:00</p>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
- 
-
-    <div class = "footer-links">
-       <a href="./products-services.html">Products & Services</a>
-        <a href = "terms.html">Terms & Conditions</a>
-        <a href = "privacy.html">Privacy Policy</a>
+    <div class="location-text">
+      <p style="padding-left: 40px">Visits by appointment only</p>
     </div>
-   
-  <div class="footer-copy">
-  <br><br>
-     © <span id="currentYear"></span> RevGT Corporation · All rights reserved
-  </div>
-</footer>
 
+    <footer id="contact">
+      <h3>Contact details</h3>
 
-<script src = "contact.js"></script>
-<script src = "https://cdn.botpress.cloud/webchat/v3.5/inject.js"></script>
-<script src = "https://files.bpcontent.cloud/2025/12/16/21/20251216214453-C5CTV8O9.js"
-defer>
-</script>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="transition.js"></script>
-<script src="footer.js" defer></script>
+      <p><strong>Office: </strong> Prishtinë, Kosovo</p>
+      <p><strong>Email: </strong> support@revgt.com · bookings@revgt.com</p>
+      <p><strong>Phone:</strong> +383 44 123 502</p>
+      <p><strong>Hours:</strong> Mon-Sat · 09:00-18:00</p>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
 
-</body>
+      <div class="footer-links">
+        <a href="./products-services.html">Products & Services</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+
+      <div class="footer-copy">
+        <br /><br />
+        © <span id="currentYear"></span> RevGT Corporation · All rights reserved
+      </div>
+    </footer>
+
+    <script src="contact.js"></script>
+    <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js"></script>
+    <script
+      src="https://files.bpcontent.cloud/2025/12/16/21/20251216214453-C5CTV8O9.js"
+      defer
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="transition.js"></script>
+    <script src="footer.js" defer></script>
+  </body>
 </html>

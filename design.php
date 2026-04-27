@@ -1,5 +1,7 @@
 <?php
 
+include "oop.php";
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -8,12 +10,12 @@ include "data/cars.php";
 function formatPrice($price) {
     return number_format($price, 0, '.', ',');
 }
-
 $brands = [];
 
 foreach ($cars as $car) {
     $brands[] = $car["brand"];
 }
+
 
 $selectedBrand = "Porsche";
 $selectedColor = "";
@@ -38,14 +40,22 @@ if ($currentCar === null) {
 if (isset($_GET["color"])) {
     $selectedColor = $_GET["color"];
 } else {
-    $selectedColor = isset($currentCar["colors"]["Black"]) ? "Black" : $currentCar["default_color"];
+    $selectedColor = $currentCar["default_color"];
 }
 
 if (!isset($currentCar["colors"][$selectedColor])) {
-    $selectedColor = isset($currentCar["colors"]["Black"]) ? "Black" : $currentCar["default_color"];
+    $selectedColor = $currentCar["default_color"];
 }
 
 $currentImage = $currentCar["colors"][$selectedColor];
+$carObj = new DiscountCar(
+    $currentCar["brand"],
+    $currentCar["full_model"],
+    $currentCar["price"],
+    10
+);
+
+$finalPrice = $carObj->getFinalPrice();
 ?>
 
 <!DOCTYPE html>
@@ -57,8 +67,9 @@ $currentImage = $currentCar["colors"][$selectedColor];
   <link rel="stylesheet" href="design.css" />
   <link rel="stylesheet" href="footer.css">
   <link rel="icon" href="fotografi/logo.jpg">
-  <script src="design.js" defer></script>
+
 </head>
+
 
 <body>
  <div class="nav">
@@ -76,7 +87,7 @@ $currentImage = $currentCar["colors"][$selectedColor];
             <h1>Configure your <b><?php echo $currentCar["brand"]; ?></b></h1>
           </div>
 
-          <div class="controls">
+      <div class="controls">
             <div>
               <span class="label">Model</span>
               <select onchange="window.location.href=this.value">
@@ -91,45 +102,46 @@ $currentImage = $currentCar["colors"][$selectedColor];
               </select>
             </div>
 
-            <div>
+             <div>
               <span class="label">Exterior colour</span>
               <div class="swatches">
                 <?php foreach ($currentCar["colors"] as $colorName => $imagePath) { ?>
                   <a href="design.php?brand=<?php echo urlencode($currentCar['brand']); ?>&color=<?php echo urlencode($colorName); ?>">
-                    <span class="swatch <?php echo strtolower(str_replace(' ', '-', $colorName)); ?> <?php if ($colorName == $selectedColor) echo 'active'; ?>"></span>
+                    <span class="color-circle <?php echo strtolower(str_replace(' ', '-', $colorName)); ?>"></span>
                   </a>
                 <?php } ?>
               </div>
             </div>
           </div>
 
-          <div class="summary">
+        <div class="summary">
             <div>Model: <b><?php echo $currentCar["full_model"]; ?></b></div>
             <div>Color: <b><?php echo $selectedColor; ?></b></div>
           </div>
         </div>
 
-        <div class="preview">
+                <div class="preview">
           <div class="badge"><?php echo $currentCar["badge"]; ?></div>
+        
 
           <div class="toprow">
             <div class="title">
               <small>Current configuration</small>
-              <h2><?php echo $currentCar["full_model"]; ?></h2>
+                <h2><?php echo $currentCar["full_model"]; ?></h2>
             </div>
 
-            <div class="price">
+          <div class="price">
               from
-              <strong>€<?php echo formatPrice($currentCar["price"]); ?></strong>
+              <strong>€<?php echo formatPrice($finalPrice); ?></strong>
             </div>
           </div>
-
-          <div class="imgwrap">
+     
+            <div class="imgwrap">
             <img src="<?php echo $currentImage; ?>" alt="<?php echo $currentCar['full_model']; ?>" />
           </div>
 
-          <div class="specs">
-            <div class="spec">
+               <div class="specs">
+             <div class="spec">
               <div class="k">Power</div>
               <div class="v"><?php echo $currentCar["power"]; ?></div>
             </div>
@@ -145,9 +157,9 @@ $currentImage = $currentCar["colors"][$selectedColor];
 
           <div class="actions">
             <a class="btn secondary" href="design.php?brand=Porsche">Reset</a>
-            <a href="../BuyItems/buy.php?car=<?php echo strtolower($currentCar['brand']); ?>" class="btn">
-              Save configuration
-            </a>
+       <a href="../BuyItems/buy.html?car=<?php echo strtolower($currentCar['brand']); ?>" class="btn">
+    Save configuration
+</a>
           </div>
         </div>
       </div>
@@ -159,8 +171,10 @@ $currentImage = $currentCar["colors"][$selectedColor];
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="transition.js"></script>
+  <script src="transition.js"></script>
 <script src="footer.js" defer></script>
 
-</body>
-</html>
+    </body>
+    </html>
+
+    

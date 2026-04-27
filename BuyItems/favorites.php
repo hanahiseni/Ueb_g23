@@ -10,7 +10,7 @@
 
   <body class="favorites-page">
   <main class="page">
-    <a href="product.html" class="back-btn">← Back</a>
+    <a href="product.php" class="back-btn">← Back</a>
 
     <h1>Favorites</h1>
 

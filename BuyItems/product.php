@@ -22,17 +22,17 @@
   </div>
 
   <nav class="menu">
-    <a href="../home.html">Home</a>
-    <a href="../about.html">About</a>
+    <a href="../home.php">Home</a>
+    <a href="../about.php">About</a>
 <div class="dropdown">
     
   <span class="dropbtn">Services</span>
   <div class="dropmenu">
-    <a href="../design.html">Customize Car</a>
+    <a href="../design.php">Customize Car</a>
   </div>
 </div>
 
-<a href="../contact.html">Contact</a>
+<a href="../contact.php">Contact</a>
   
 
 
@@ -43,7 +43,7 @@
 <section class="hero">
   <div class="hero-stack">
 
-    <a href="favorites.html" class="cart-btn">
+    <a href="favorites.php" class="cart-btn">
       ★ Favorites <span class="cart-badge" id="favCount">0</span>
     </a>
 

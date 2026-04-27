@@ -32,7 +32,7 @@ session_start();
         <li><a href="design.html">Configurator</a></li>
         <li><a href="contact.html">Contact</a></li>
    <?php if(isset($_SESSION["user"])): ?>
-   <li><a>Welcome, <?php echo $_SESSION["user"]; ?></a></li>
+  
 
     <?php if($_SESSION["role"] == "admin"): ?>
         <li><a href="admin.php">Admin Panel</a></li>
@@ -60,6 +60,12 @@ session_start();
 
     <section class="hero">
       <h1>RevGT</h1>
+      <?php if(isset($_SESSION["user"])): ?>
+  <p class="welcome-text">
+    Welcome, <?php echo $_SESSION["user"]; ?>
+  </p>
+<?php endif; ?>
+      
       <h2>Electric Performance Redefined</h2>
       <p>Precision engineering. Minimal design. Maximum performance.</p>
       <a href="BuyItems/product.html" class="explore-btn">Explore models</a>

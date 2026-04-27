@@ -30,7 +30,7 @@ session_start();
         <li><a href="BuyItems/product.php">Products</a></li>
 
         <li><a href="design.html">Configurator</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.php">Contact</a></li>
    <?php if(isset($_SESSION["user"])): ?>
   
 

@@ -46,7 +46,7 @@ $currentImage = $currentCar["colors"][$selectedColor];
   <title>Car Configurator – Porsche / Audi / Mercedes / BMW</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="design.css" />
+  <link rel="stylesheet" href="design.css?v=30" />
   <link rel="stylesheet" href="footer.css">
   <link rel="stylesheet" href="cookies.css">
   <link rel="icon" href="fotografi/logo.jpg">

@@ -53,9 +53,9 @@ $cars = [
         "top_speed" => "315 km/h",
         "default_color" => "Black",
         "colors" => [
-            "Black" => "fotografi/mercedes 1.png",
-            "White" => "fotografi/mercedes 2.png",
-            "Red"   => "fotografi/mercedes 3.png",
+            "White" => "fotografi/mercedes 1.png",
+            "Red" => "fotografi/mercedes 2.png",
+            "Black"   => "fotografi/mercedes 3.png",
             "Green" => "fotografi/mercedes 4.png",
             "Blue"  => "fotografi/mercedes 5.png"
         ]

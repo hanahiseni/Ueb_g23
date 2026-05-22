@@ -1,32 +1,9 @@
 <?php
 session_start();
+require_once __DIR__ . "/config/db.php";
 
-$file = "users.txt";
-$users = [];
-
-$users[] = [
-    "username" => "admin",
-    "email" => "admin@revgt.com",
-    "password" => "12345678",
-    "role" => "admin"
-];
-
-if (file_exists($file)) {
-    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
-    foreach ($lines as $line) {
-        $parts = explode("|", trim($line));
-
-        if (count($parts) == 3) {
-            $users[] = [
-                "username" => trim($parts[0]),
-                "email" => trim($parts[1]),
-                "password" => trim($parts[2]),
-                "role" => "user"
-            ];
-        }
-    }
-}
+$error = "";
+$username = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = trim($_POST["username"] ?? "");
@@ -34,25 +11,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (empty($username) || empty($password)) {
         $error = "All fields are required!";
-    }
-    elseif (!preg_match("/^[a-zA-Z][a-zA-Z0-9_]{2,19}$/", $username)) {
+    } elseif (!preg_match("/^[a-zA-Z][a-zA-Z0-9_]{2,19}$/", $username)) {
         $error = "Invalid username format!";
-    }
-    elseif (strlen($password) < 8) {
-        $error = "Password must be at least 8 characters long!";
-    }
-    else {
-        foreach ($users as $u) {
-            if ($username === $u["username"] && $password === $u["password"]) {
-                $_SESSION["user"] = $u["username"];
-                $_SESSION["role"] = $u["role"];
+    } else {
+        $sql = "SELECT id, username, password_hash, role FROM users WHERE username = ?";
+        $stmt = mysqli_prepare($conn, $sql);
 
-                header("Location: home.php");
-                exit();
-            }
+        mysqli_stmt_bind_param($stmt, "s", $username);
+        mysqli_stmt_execute($stmt);
+
+        $result = mysqli_stmt_get_result($stmt);
+        $user = mysqli_fetch_assoc($result);
+
+        if ($user && password_verify($password, $user["password_hash"])) {
+            $_SESSION["user_id"] = $user["id"];
+            $_SESSION["user"] = $user["username"];
+            $_SESSION["role"] = $user["role"];
+
+            header("Location: home.php");
+            exit();
+        } else {
+            $error = "Wrong credentials!";
         }
-
-        $error = "Wrong credentials!";
     }
 }
 ?>
@@ -100,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <a href="signup.php" style="color:#fff;">Sign up</a>
         </p>
 
-        <?php if(isset($error)): ?>
+        <?php if(!empty($error)): ?>
             <div class="error" style="margin-top:15px;color:#ff4d4d;font-weight:500;">
                 <?= htmlspecialchars($error) ?>
             </div>

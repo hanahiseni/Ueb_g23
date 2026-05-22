@@ -1,7 +1,10 @@
 <?php
+require_once __DIR__ . "/config/db.php";
 
 $success = "";
 $error = "";
+$username = "";
+$email = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -9,64 +12,44 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email    = trim($_POST["email"] ?? "");
     $password = trim($_POST["password"] ?? "");
 
-    // ===== VALIDATION =====
-
     if (empty($username) || empty($email) || empty($password)) {
         $error = "All fields are required!";
-    }
-
-    elseif (!preg_match("/^[a-zA-Z][a-zA-Z0-9_]{2,19}$/", $username)) {
-        $error = "Username must be 3–20 chars, start with letter, no spaces.";
-    }
-
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    } elseif (!preg_match("/^[a-zA-Z][a-zA-Z0-9_]{2,19}$/", $username)) {
+        $error = "Username must be 3-20 chars, start with letter, no spaces.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Invalid email format!";
-    }
-
-    elseif (strlen($password) < 8) {
+    } elseif (strlen($password) < 8) {
         $error = "Password must be at least 8 characters!";
-    }
+    } else {
 
-    else {
+        $checkSql = "SELECT id FROM users WHERE username = ? OR email = ?";
+        $checkStmt = mysqli_prepare($conn, $checkSql);
 
-        $file = "users.txt";
+        mysqli_stmt_bind_param($checkStmt, "ss", $username, $email);
+        mysqli_stmt_execute($checkStmt);
 
-        // ===== CHECK DUPLICATES =====
-        if (file_exists($file)) {
-            $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $checkResult = mysqli_stmt_get_result($checkStmt);
 
-            foreach ($lines as $line) {
-                $parts = explode("|", $line);
+        if (mysqli_num_rows($checkResult) > 0) {
+            $error = "Username or email already exists!";
+        } else {
+            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-                if (count($parts) >= 3) {
-                    $existingUser = $parts[0];
-                    $existingEmail = $parts[1];
+            $insertSql = "INSERT INTO users (username, email, password_hash, role)
+                          VALUES (?, ?, ?, 'user')";
+            $insertStmt = mysqli_prepare($conn, $insertSql);
 
-                    if ($username === $existingUser) {
-                        $error = "Username already exists!";
-                        break;
-                    }
+            mysqli_stmt_bind_param($insertStmt, "sss", $username, $email, $passwordHash);
 
-                    if ($email === $existingEmail) {
-                        $error = "Email already exists!";
-                        break;
-                    }
-                }
+            if (mysqli_stmt_execute($insertStmt)) {
+                $success = "Account created successfully!";
+            } else {
+                $error = "Something went wrong. Please try again.";
             }
-        }
-
-        // ===== SAVE USER =====
-        if (empty($error)) {
-
-            // NOTE: për production përdor password_hash()
-            file_put_contents($file, $username . "|" . $email . "|" . $password . "\n", FILE_APPEND);
-
-            $success = "Account created successfully!";
         }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,13 +99,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <?php if (!empty($error)): ?>
             <p class="error" style="margin-top:15px;color:#ff4d4d;font-weight:500;">
-                <?= $error ?>
+                <?= htmlspecialchars($error) ?>
             </p>
         <?php endif; ?>
 
         <?php if (!empty($success)): ?>
             <div class="success-box">
-                <p><?= $success ?></p>
+                <p><?= htmlspecialchars($success) ?></p>
                 <a href="login.php" class="login-link">Go to Login</a>
             </div>
         <?php endif; ?>

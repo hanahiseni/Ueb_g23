@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 include "data/cars.php";
+require_once "oop.php";
 
 $selectedBrand = "Porsche";
 $selectedColor = "";
@@ -37,6 +38,16 @@ if (!isset($currentCar["colors"][$selectedColor])) {
 }
 
 $currentImage = $currentCar["colors"][$selectedColor];
+
+$configuredCar = new DiscountCar(
+    $currentCar["brand"],
+    $currentCar["full_model"],
+    (float)$currentCar["price"],
+    10
+);
+
+$discountAmount = $configuredCar->getDiscountAmount();
+$finalPrice = $configuredCar->getFinalPrice();
 ?>
 
 <!DOCTYPE html>
@@ -122,6 +133,14 @@ $currentImage = $currentCar["colors"][$selectedColor];
           <div class="price">
             from
             <strong>€<?php echo number_format($currentCar["price"], 0, '.', ','); ?></strong>
+            <br>
+            <small>
+              Discount <?php echo $configuredCar->getDiscount(); ?>%:
+              -€<?php echo number_format($discountAmount, 0, '.', ','); ?>
+            </small>
+            <br>
+            final
+            <strong>€<?php echo number_format($finalPrice, 0, '.', ','); ?></strong>
           </div>
         </div>
 

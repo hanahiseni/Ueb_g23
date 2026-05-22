@@ -6,7 +6,7 @@
     <link rel="icon" href="/fotografi/logo.jpg">
    
 <link rel="stylesheet" href="about.css">
-<link rel="stylesheet" href="product.css">
+<link rel="stylesheet" href="product.css?v=99">
     <link rel="stylesheet" href="../footer.css">
     
    

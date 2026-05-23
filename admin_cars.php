@@ -22,8 +22,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $brand = trim($_POST["brand"] ?? "");
         $model = trim($_POST["model"] ?? "");
         $price = trim($_POST["price"] ?? "");
-        $image = trim($_POST["image"] ?? "");
+        
         $description = trim($_POST["description"] ?? "");
+        $fileType = $_FILES["car_image"]["type"];
+
+        $allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+
+        if (!in_array($fileType, $allowedTypes)) {
+            $error = "Only JPG, PNG and WEBP images are allowed.";
+        }
+
+       if (empty($error)) {
+
+            $uploadPath = "fotografi/" . basename($imageName);
+
+            move_uploaded_file($tmpName, $uploadPath);
+
+            $image = $uploadPath;
+        }
 
         if ($brand === "" || $model === "" || $image === "" || !is_numeric($price) || $price <= 0) {
             $error = "Please fill brand, model, valid price and image.";
@@ -76,10 +92,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt = mysqli_prepare($conn, $sql);
             mysqli_stmt_bind_param($stmt, "i", $carId);
 
-            if (mysqli_stmt_execute($stmt)) {
-                $success = "Car deleted successfully.";
-            } else {
-                $error = "Could not delete car.";
+            try {
+
+                if (mysqli_stmt_execute($stmt)) {
+                    $success = "Car created successfully.";
+                } else {
+                    throw new Exception("Could not create car.");
+                }
+
+            } catch (Exception $e) {
+
+                $error = $e->getMessage();
             }
         }
     }
@@ -204,13 +227,13 @@ $cars = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <div class="panel">
     <h2>Add Car</h2>
 
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <input type="hidden" name="action" value="create">
 
         <input type="text" name="brand" placeholder="Brand" required>
         <input type="text" name="model" placeholder="Model" required>
         <input type="number" step="0.01" name="price" placeholder="Price" required>
-        <input type="text" name="image" placeholder="fotografi/example.png" required>
+        <input type="file" name="car_image" required>
         <textarea name="description" placeholder="Description"></textarea>
 
         <button type="submit">Create Car</button>

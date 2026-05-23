@@ -38,8 +38,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($errors)) {
+
+    $to = "support@revgt.com";
+    $subject = "New Contact Request - RevGT";
+
+    $body = "Name: $name\n";
+    $body .= "Email: $email\n";
+    $body .= "Phone: $phone\n";
+    $body .= "Location: $location\n\n";
+    $body .= "Message:\n$message";
+
+    $headers = "From: $email\r\n";
+    $headers .= "Reply-To: $email\r\n";
+
+    if (mail($to, $subject, $body, $headers)) {
         $success = true;
+    } else {
+        $errors[] = "Email sending failed.";
     }
+}
 }
 ?>
 

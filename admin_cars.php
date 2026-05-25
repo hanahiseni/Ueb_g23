@@ -24,27 +24,32 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $model = trim($_POST["model"] ?? "");
         $price = trim($_POST["price"] ?? "");
         
-        $description = trim($_POST["description"] ?? "");
-        $fileType = $_FILES["car_image"]["type"];
+    $description = trim($_POST["description"] ?? "");
+    $image = "";
 
-        $allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+if (!isset($_FILES["car_image"]) || $_FILES["car_image"]["error"] !== UPLOAD_ERR_OK) {
+    $error = "Car image is required.";
+} else {
+    $imageName = $_FILES["car_image"]["name"];
+    $tmpName = $_FILES["car_image"]["tmp_name"];
 
-        if (!in_array($fileType, $allowedTypes)) {
-            $error = "Only JPG, PNG and WEBP images are allowed.";
-        }
+    $fileType = mime_content_type($tmpName);
+    $allowedTypes = ["image/jpeg", "image/png", "image/webp"];
 
-       if (empty($error)) {
+    if (!in_array($fileType, $allowedTypes, true)) {
+        $error = "Only JPG, PNG and WEBP images are allowed.";
+    } else {
+        $extension = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
+        $safeImageName = uniqid("car_", true) . "." . $extension;
+        $uploadPath = "fotografi/" . $safeImageName;
 
-
-        $imageName = $_FILES["car_image"]["name"];
-        $tmpName = $_FILES["car_image"]["tmp_name"];
-
-            $uploadPath = "fotografi/" . basename($imageName);
-
-            move_uploaded_file($tmpName, $uploadPath);
-
+        if (move_uploaded_file($tmpName, $uploadPath)) {
             $image = $uploadPath;
+        } else {
+            $error = "Image upload failed.";
         }
+    }
+}
 
         if ($brand === "" || $model === "" || $image === "" || !is_numeric($price) || $price <= 0) {
             $error = "Please fill brand, model, valid price and image.";

@@ -3,7 +3,7 @@ session_start();
 require_once __DIR__ . "/helpers.php";
 
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 
 include "data/cars.php";
 require_once "oop.php";
@@ -11,7 +11,9 @@ require_once "oop.php";
 $selectedBrand = "Porsche";
 $selectedColor = "";
 
-if (isset($_GET["brand"])) {
+$allowedBrands = array_column($cars, "brand");
+
+if (isset($_GET["brand"]) && in_array($_GET["brand"], $allowedBrands, true)) {
     $selectedBrand = $_GET["brand"];
 }
 
@@ -75,7 +77,7 @@ $finalPrice = $configuredCar->getFinalPrice();
 
 <div class="nav">
   <?php foreach ($brands as $brand) { ?>
-    <a href="design.php?brand=<?php echo urlencode($brand); ?>"><?php echo $brand; ?></a>
+    <a href="design.php?brand=<?php echo urlencode($brand); ?>"><?php echo e($brand); ?></a>
   <?php } ?>
 </div>
 
@@ -86,7 +88,7 @@ $finalPrice = $configuredCar->getFinalPrice();
       <div>
         <div class="headline">
           <small>Configurator</small>
-          <h1>Configure your <b><?php echo $currentCar["brand"]; ?></b></h1>
+          <h1>Configure your <b><?php echo e($currentCar["brand"]); ?></b></h1>
         </div>
 
         <div class="controls">
@@ -98,7 +100,7 @@ $finalPrice = $configuredCar->getFinalPrice();
                   value="design.php?brand=<?php echo urlencode($car['brand']); ?>"
                   <?php if ($car["brand"] == $currentCar["brand"]) echo "selected"; ?>
                 >
-                  <?php echo $car["full_model"]; ?>
+                  <?php echo e($car["full_model"]); ?>
                 </option>
               <?php } ?>
             </select>
@@ -117,18 +119,18 @@ $finalPrice = $configuredCar->getFinalPrice();
         </div>
 
         <div class="summary">
-          <div>Model: <b><?php echo $currentCar["full_model"]; ?></b></div>
-          <div>Color: <b><?php echo $selectedColor; ?></b></div>
+          <div>Model: <b><?php echo e($currentCar["full_model"]); ?></b></div>
+          <div>Color: <b><?php echo e($selectedColor); ?></b></div>
         </div>
       </div>
 
       <div class="preview">
-        <div class="badge"><?php echo $currentCar["badge"]; ?></div>
+        <div class="badge"><?php echo e($currentCar["badge"]); ?></div>
 
         <div class="toprow">
           <div class="title">
             <small>Current configuration</small>
-            <h2><?php echo $currentCar["full_model"]; ?></h2>
+            <h2><?php echo e($currentCar["full_model"]); ?></h2>
           </div>
 
           <div class="price">
@@ -146,23 +148,23 @@ $finalPrice = $configuredCar->getFinalPrice();
         </div>
 
         <div class="imgwrap">
-          <img src="<?php echo $currentImage; ?>" alt="<?php echo $currentCar['full_model']; ?>" />
+          <img src="<?php echo e($currentImage); ?>" alt="<?php echo $currentCar['full_model']; ?>" />
         </div>
 
         <div class="specs">
           <div class="spec">
             <div class="k">Power</div>
-            <div class="v"><?php echo $currentCar["power"]; ?></div>
+            <div class="v"><?php echo  e($currentCar["power"]); ?></div>
           </div>
 
           <div class="spec">
             <div class="k">0–100 km/h</div>
-            <div class="v"><?php echo $currentCar["acceleration"]; ?></div>
+            <div class="v"><?php echo e($currentCar["acceleration"]); ?></div>
           </div>
 
           <div class="spec">
             <div class="k">Top speed</div>
-            <div class="v"><?php echo $currentCar["top_speed"]; ?></div>
+            <div class="v"><?php echo e($currentCar["top_speed"]); ?></div>
           </div>
         </div>
 

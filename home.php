@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . "/helpers.php";
 ?>
 
 <!doctype html>
@@ -18,7 +19,7 @@ session_start();
     />
 
     <script>
-      window.REVGT_USER = "<?php echo isset($_SESSION['user']) ? htmlspecialchars($_SESSION['user'], ENT_QUOTES) : 'guest'; ?>";
+      window.REVGT_USER = "<?php echo isset($_SESSION['user']) ? e($_SESSION['user']) : 'guest'; ?>";
     </script>
     <script src="cookies.js" defer></script>
   </head>
@@ -58,7 +59,7 @@ session_start();
 
       <?php if(isset($_SESSION["user"])): ?>
         <p class="welcome-text">
-          Welcome, <?php echo $_SESSION["user"]; ?>
+          Welcome, <?php echo e($_SESSION["user"]); ?>
         </p>
       <?php endif; ?>
 

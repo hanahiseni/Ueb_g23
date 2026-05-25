@@ -3,11 +3,11 @@
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 $host = "127.0.0.1";
-$username = "revgt_app";
+$user = "revgt_app";
 $password = "revgt123";
-$dbname = "revgt_db";
-$port = 3307;
+$database = "revgt_db";
 
+<<<<<<< HEAD
 try {
     $conn = mysqli_connect($host, $username, $password, $dbname, $port);
     mysqli_set_charset($conn, "utf8mb4");
@@ -16,3 +16,14 @@ try {
     die("Database connection failed. Please try again later.");
 }
 
+=======
+$conn = mysqli_connect($host, $user, $password, $database, 3306);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+echo "DB Connected Successfully";
+
+?>
+>>>>>>> 375bc74 ( implementimi i crud delete)

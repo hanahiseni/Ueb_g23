@@ -86,14 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
-    if ($action === "delete") {
-        $carId = (int)($_POST["car_id"] ?? 0);
-if (mysqli_stmt_execute($stmt)) {
-    $success = "Car deleted successfully.";
-} else {
-    throw new Exception("Could not delete car.");
-}
-    }
+
 }
 
 $result = mysqli_query($conn, "SELECT id, brand, model, price, image, description, created_at FROM cars ORDER BY id DESC");

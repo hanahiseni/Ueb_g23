@@ -13,19 +13,19 @@ $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $name = trim($_POST["name"]);
-    $email = trim($_POST["email"]);
-    $phone = trim($_POST["phone"]);
-    $location = trim($_POST["location"]);
-    $message = trim($_POST["message"]);
+  $name = trim($_POST["name"] ?? "");
+  $email = trim($_POST["email"] ?? "");
+  $phone = trim($_POST["phone"] ?? "");
+  $location = trim($_POST["location"] ?? "");
+  $message = trim($_POST["message"] ?? "");
 
     if (!preg_match("/^[A-Za-z\s]{2,50}$/", $name)) {
         $errors[] = "Name must contain only letters and spaces (2-50 characters).";
     }
 
-    if (!preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/", $email)) {
-        $errors[] = "Invalid email format.";
-    }
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = "Invalid email format.";
+}
 
     if (!preg_match("/^((044|045|049)\d{6}|\+383\s?\d{8})$/", $phone)) {
         $errors[] = "Invalid phone number format.";
@@ -51,8 +51,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $body .= "Location: $location\n\n";
     $body .= "Message:\n$message";
 
-    $headers = "From: $email\r\n";
-    $headers .= "Reply-To: $email\r\n";
+  $safeEmail = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+  $headers = "From: noreply@revgt.com\r\n";
+  $headers .= "Reply-To: " . $safeEmail . "\r\n";
 
     if (mail($to, $subject, $body, $headers)) {
         $success = true;
@@ -114,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <?php if ($success): ?>
         <div class="result-box success">
           <h2>Request submitted successfully!</h2>
-          <p>Thank you, <?php echo htmlspecialchars($name); ?>. We will contact you soon.</p>
+          <p>Thank you, <?php echo e($name); ?>. We will contact you soon.</p>
         </div>
       <?php endif; ?>
 
@@ -123,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <h2>Validation Errors</h2>
           <ul>
             <?php foreach ($errors as $error): ?>
-              <li><?php echo htmlspecialchars($error); ?></li>
+              <li><?php echo e($error); ?></li>
             <?php endforeach; ?>
           </ul>
         </div>
@@ -141,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             id="name"
             name="name"
             placeholder="Full name"
-            value="<?php echo htmlspecialchars($name); ?>"
+            value="<?php echo e($name); ?>"
             required
           />
 
@@ -150,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             id="email"
             name="email"
             placeholder="Email address"
-            value="<?php echo htmlspecialchars($email); ?>"
+            value="<?php echo e($email); ?>"
             required
           />
         </div>
@@ -161,7 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             id="phone"
             name="phone"
             placeholder="Phone number"
-            value="<?php echo htmlspecialchars($phone); ?>"
+            value="<?php echo e($phone); ?>"
             required
           />
 
@@ -181,7 +183,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           name="message"
           placeholder="Your request"
           required
-        ><?php echo htmlspecialchars($message); ?></textarea>
+        ><?php echo e($message); ?></textarea>
 
         <button type="submit">Submit Request</button>
 

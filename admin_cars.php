@@ -86,14 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
-    if ($action === "delete") {
-        $carId = (int)($_POST["car_id"] ?? 0);
-if (mysqli_stmt_execute($stmt)) {
-    $success = "Car deleted successfully.";
-} else {
-    throw new Exception("Could not delete car.");
-}
-    }
+
 }
 
 $result = mysqli_query($conn, "SELECT id, brand, model, price, image, description, created_at FROM cars ORDER BY id DESC");
@@ -323,6 +316,49 @@ document.querySelectorAll(".delete-btn").forEach(button => {
         });
     });
 });
+
+document.querySelectorAll("form").forEach(form => {
+
+    const actionInput = form.querySelector('input[name="action"]');
+
+    if (actionInput && actionInput.value === "update") {
+
+        form.addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch("ajax/update_car.php", {
+
+                method: "POST",
+
+                body: formData
+
+            })
+
+            .then(response => response.text())
+
+            .then(data => {
+
+                alert(data);
+
+            })
+
+            .catch(error => {
+
+                alert("AJAX update error");
+
+                console.error(error);
+
+            });
+
+        });
+
+    }
+
+});
 </script>
+
 </body>
 </html>

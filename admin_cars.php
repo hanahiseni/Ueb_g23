@@ -51,9 +51,17 @@ if (!isset($_FILES["car_image"]) || $_FILES["car_image"]["error"] !== UPLOAD_ERR
     }
 }
 
-        if ($brand === "" || $model === "" || $image === "" || !is_numeric($price) || $price <= 0) {
-            $error = "Please fill brand, model, valid price and image.";
-        } else {
+        if ($brand === "" || strlen($brand) > 50) {
+            $error = "Invalid brand.";
+    }   elseif ($model === "" || strlen($model) > 80) {
+            $error = "Invalid model.";
+    }   elseif (!is_numeric($price) || $price <= 0) {
+            $error = "Invalid price.";
+    }   elseif ($image === "") {
+            $error = "Car image is required.";
+    }
+
+    else {
             $sql = "INSERT INTO cars (brand, model, price, image, description)
                     VALUES (?, ?, ?, ?, ?)";
             $stmt = mysqli_prepare($conn, $sql);
@@ -195,7 +203,7 @@ $cars = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <body>
 
 <h1>Manage Cars</h1>
-<p>Welcome, <?php echo htmlspecialchars($_SESSION["user"]); ?></p>
+<p>Welcome, <?php echo e($_SESSION["user"]); ?></p>
 
 <div class="admin-nav">
     <a href="admin_users.php">Manage Users</a>
@@ -204,11 +212,11 @@ $cars = mysqli_fetch_all($result, MYSQLI_ASSOC);
 </div>
 
 <?php if ($success): ?>
-    <p class="success"><?php echo htmlspecialchars($success); ?></p>
+    <p class="success"><?php echo e($success); ?></p>
 <?php endif; ?>
 
 <?php if ($error): ?>
-    <p class="error"><?php echo htmlspecialchars($error); ?></p>
+    <p class="error"><?php echo e($error); ?></p>
 <?php endif; ?>
 
 <div class="panel">
@@ -247,8 +255,8 @@ $cars = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 <td>
                     <img
                         class="car-thumb"
-                        src="<?php echo htmlspecialchars($car["image"]); ?>"
-                        alt="<?php echo htmlspecialchars($car["brand"] . " " . $car["model"]); ?>"
+                        src="<?php echo e($car["image"]); ?>"
+                        alt="<?php echo e($car["brand"] . " " . $car["model"]); ?>"
                     >
                 </td>
 
@@ -257,10 +265,10 @@ $cars = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         <input type="hidden" name="action" value="update">
                         <input type="hidden" name="car_id" value="<?php echo (int)$car["id"]; ?>">
 
-                        <input type="text" name="brand" value="<?php echo htmlspecialchars($car["brand"]); ?>" required>
-                        <input type="text" name="model" value="<?php echo htmlspecialchars($car["model"]); ?>" required>
-                        <input type="number" step="0.01" name="price" value="<?php echo htmlspecialchars($car["price"]); ?>" required>
-                        <input type="text" name="image" value="<?php echo htmlspecialchars($car["image"]); ?>" required>
+                        <input type="text" name="brand" value="<?php echo e($car["brand"]); ?>" required>
+                        <input type="text" name="model" value="<?php echo e($car["model"]); ?>" required>
+                        <input type="number" step="0.01" name="price" value="<?php echo e($car["price"]); ?>" required>
+                        <input type="text" name="image" value="<?php echo e($car["image"]); ?>" required>
 
                         <button type="submit">Update</button>
                     </form>
@@ -270,17 +278,17 @@ $cars = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     <form method="POST">
                         <input type="hidden" name="action" value="update">
                         <input type="hidden" name="car_id" value="<?php echo (int)$car["id"]; ?>">
-                        <input type="hidden" name="brand" value="<?php echo htmlspecialchars($car["brand"]); ?>">
-                        <input type="hidden" name="model" value="<?php echo htmlspecialchars($car["model"]); ?>">
-                        <input type="hidden" name="price" value="<?php echo htmlspecialchars($car["price"]); ?>">
-                        <input type="hidden" name="image" value="<?php echo htmlspecialchars($car["image"]); ?>">
+                        <input type="hidden" name="brand" value="<?php echo e($car["brand"]); ?>">
+                        <input type="hidden" name="model" value="<?php echo e($car["model"]); ?>">
+                        <input type="hidden" name="price" value="<?php echo e($car["price"]); ?>">
+                        <input type="hidden" name="image" value="<?php echo e($car["image"]); ?>">
 
-                        <textarea name="description"><?php echo htmlspecialchars($car["description"] ?? ""); ?></textarea>
+                        <textarea name="description"><?php echo e($car["description"] ?? ""); ?></textarea>
                         <button type="submit">Update</button>
                     </form>
                 </td>
 
-                <td><?php echo htmlspecialchars($car["created_at"]); ?></td>
+                <td><?php echo e($car["created_at"]); ?></td>
 
              <td>
     <button type="button" class="delete-btn btn-danger" data-id="<?php echo (int)$car['id']; ?>">

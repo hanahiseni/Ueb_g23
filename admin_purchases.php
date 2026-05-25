@@ -23,9 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $purchaseId = (int)($_POST["purchase_id"] ?? 0);
         $status = $_POST["status"] ?? "pending";
 
-        if ($purchaseId <= 0 || !in_array($status, ["pending", "confirmed", "cancelled"])) {
+       $allowedStatuses = ["pending", "confirmed", "cancelled"];
+
+        if ($purchaseId <= 0 || !in_array($status, $allowedStatuses, true)) {
             $error = "Invalid status update.";
-        } else {
+        } 
+        else {
             $sql = "UPDATE purchases SET status = ? WHERE id = ?";
             $stmt = mysqli_prepare($conn, $sql);
             mysqli_stmt_bind_param($stmt, "si", $status, $purchaseId);
@@ -163,7 +166,7 @@ $purchases = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <body>
 
 <h1>Manage Purchases</h1>
-<p>Welcome, <?php echo htmlspecialchars($_SESSION["user"]); ?></p>
+<p>Welcome, <?php echo e($_SESSION["user"]); ?></p>
 
 <div class="admin-nav">
     <a href="admin_users.php">Manage Users</a>
@@ -172,11 +175,11 @@ $purchases = mysqli_fetch_all($result, MYSQLI_ASSOC);
 </div>
 
 <?php if ($success): ?>
-    <p class="success"><?php echo htmlspecialchars($success); ?></p>
+    <p class="success"><?php echo e($success); ?></p>
 <?php endif; ?>
 
 <?php if ($error): ?>
-    <p class="error"><?php echo htmlspecialchars($error); ?></p>
+    <p class="error"><?php echo e($error); ?></p>
 <?php endif; ?>
 
 <div class="panel">
@@ -198,20 +201,20 @@ $purchases = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <tr>
                 <td><?php echo (int)$purchase["id"]; ?></td>
 
-                <td><?php echo htmlspecialchars($purchase["username"]); ?></td>
+                <td><?php echo e($purchase["username"]); ?></td>
 
                 <td>
-                    <?php echo htmlspecialchars($purchase["brand"] . " " . $purchase["model"]); ?><br>
-                    <?php echo htmlspecialchars($purchase["price"]); ?> EUR
+                    <?php echo e($purchase["brand"] . " " . $purchase["model"]); ?><br>
+                    <?php echo e($purchase["price"]); ?> EUR
                 </td>
 
                 <td>
-                    <?php echo htmlspecialchars($purchase["full_name"]); ?><br>
-                    <?php echo htmlspecialchars($purchase["email"]); ?><br>
-                    <?php echo htmlspecialchars($purchase["address"]); ?>
+                    <?php echo e($purchase["full_name"]); ?><br>
+                    <?php echo e($purchase["email"]); ?><br>
+                    <?php echo e($purchase["address"]); ?>
                 </td>
 
-                <td><?php echo htmlspecialchars($purchase["payment_method"]); ?></td>
+                <td><?php echo e($purchase["payment_method"]); ?></td>
 
                 <td>
                     <form method="POST">
@@ -228,7 +231,7 @@ $purchases = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     </form>
                 </td>
 
-                <td><?php echo htmlspecialchars($purchase["created_at"]); ?></td>
+                <td><?php echo e($purchase["created_at"]); ?></td>
 
                 <td>
                     <form method="POST" onsubmit="return confirm('Delete this purchase?');">

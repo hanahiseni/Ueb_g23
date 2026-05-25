@@ -9,16 +9,38 @@ use PHPMailer\PHPMailer\Exception;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Marrja e të dhënave nga forma
-    $name = $_POST["name"] ?? "";
-    $email = $_POST["email"] ?? "";
-    $address = $_POST["address"] ?? "";
-    $payment = $_POST["payment"] ?? "";
-    $car = $_POST["car"] ?? "Unknown";
+  $name = trim($_POST["name"] ?? "");
+  $email = trim($_POST["email"] ?? "");
+  $address = trim($_POST["address"] ?? "");
+  $payment = trim($_POST["payment"] ?? "");
+  $car = trim($_POST["car"] ?? "Unknown");
+
+
+
+
 
     // Validim minimal
-    if (!$name || !$email || !$address) {
-        die("Missing required fields.");
-    }
+   $allowedPayments = ["credit", "paypal", "bank"];
+
+if ($name === "" || strlen($name) < 2 || strlen($name) > 80) {
+    die("Invalid name.");
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    die("Invalid email.");
+}
+
+if ($address === "" || strlen($address) < 5 || strlen($address) > 150) {
+    die("Invalid address.");
+}
+
+if (!in_array($payment, $allowedPayments, true)) {
+    die("Invalid payment method.");
+}
+
+if ($car === "" || strlen($car) > 80) {
+    die("Invalid car.");
+}
 
     $mail = new PHPMailer(true);
 
@@ -42,15 +64,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->isHTML(true);
         $mail->Subject = 'Purchase Confirmation - RevGT';
 
-        $mail->Body = "
-            <h2>Thank you for your purchase!</h2>
-            <p><strong>Name:</strong> $name</p>
-            <p><strong>Car:</strong> $car</p>
-            <p><strong>Payment:</strong> $payment</p>
-            <p><strong>Address:</strong> $address</p>
-            <br>
-            <p>Your order has been received successfully.</p>
-        ";
+
+        $safeName = e($name);
+        $safeCar = e($car);
+        $safePayment = e($payment);
+        $safeAddress = e($address);
+
+
+      $mail->Body = "
+        <h2>Thank you for your purchase!</h2>
+        <p><strong>Name:</strong> {$safeName}</p>
+        <p><strong>Car:</strong> {$safeCar}</p>
+        <p><strong>Payment:</strong> {$safePayment}</p>
+        <p><strong>Address:</strong> {$safeAddress}</p>
+        <br>
+        <p>Your order has been received successfully.</p>
+    ";
 
         $mail->send();
 
@@ -59,6 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
 
     } catch (Exception $e) {
-        echo "Email could not be sent. Error: {$mail->ErrorInfo}";
+       error_log("Email error: " . $mail->ErrorInfo);
+       echo "Email could not be sent. Please try again later.";
     }
 }

@@ -67,16 +67,86 @@ RevGT/
 ├── signup.php
 ├── README.md
 └── index.php
+```
 
-disa demonstrime me foto:
+## Databaza dhe Menaxhimi i të Dhënave
 
+Në projekt është integruar databaza MySQL për ruajtjen dhe menaxhimin e të dhënave.
 
-## Pamje nga Projekti
+Janë krijuar tabelat:
 
-![Foto 1](foto/1.png)
+- `users`
+- `cars`
+- `purchases`
 
-![Foto 2](foto/2.png)
+Tabela janë të lidhura përmes relacioneve (Foreign Keys).
 
-![Foto 3](foto/3.png)
+Gjithashtu janë implementuar operacionet:
 
-![Foto 4](foto/4.png)
+- Create
+- Read
+- Update
+- Delete (CRUD)
+
+për menaxhimin e veturave dhe përdoruesve.
+
+Për lidhjen me databazën është përdorur PDO dhe prepared statements.
+
+---
+
+## Siguria
+
+Në projekt janë implementuar mekanizma sigurie si:
+
+- Mbrojtja nga SQL Injection
+- Sanitizimi i output-it për mbrojtje nga XSS
+- Validimi server-side i inputeve
+- Hashimi i password-ave me `password_hash()`
+- Verifikimi i password-ave me `password_verify()`
+
+---
+
+## AJAX dhe Komunikimi Dinamik
+
+Në projekt është implementuar AJAX për operacione pa refresh të faqes.
+
+Është implementuar:
+
+- Update i veturave me AJAX
+- Delete i veturave me AJAX
+
+Kjo e bën aplikacionin më interaktiv dhe më të shpejtë për përdoruesin.
+
+---
+
+## Integrimi i API-ve
+
+Është përdorur një Web API e jashtme për Currency Exchange Rates.
+
+API përdoret për marrjen e të dhënave dinamike në kohë reale.
+
+---
+
+## Features
+
+- User Authentication (Login/Register)
+- Admin Dashboard
+- Car Management System
+- AJAX Operations without page refresh
+- MySQL Database Integration
+- External API Integration
+- Email Notifications
+- Responsive Design
+
+---
+
+## How to Run the Project
+
+1. Start Apache and MySQL in XAMPP
+2. Import `revgt_db.sql` into phpMyAdmin
+3. Configure database credentials in `config/db.php`
+4. Open the project in browser:
+
+```text
+http://localhost/Ueb_g23
+```

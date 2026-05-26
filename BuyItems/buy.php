@@ -2,8 +2,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . "/../helpers.php";
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+
 ?>
 
 <!DOCTYPE html>
@@ -22,13 +21,13 @@ use PHPMailer\PHPMailer\Exception;
 
     <form id="checkoutForm" action="process-purchase.php" method="POST">
       <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" placeholder="Please enter your name" required>
+      <input type="text" id="name" name="name" placeholder="Please enter your name" minlength="2" maxlength="80" required>
 
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <input type="email" id="email" name="email" placeholder="Enter your email" maxlength="100" required>
 
       <label for="address">Address</label>
-      <input type="text" id="address" name="address" placeholder="Street, City, Country" required>
+      <input type="text" id="address" name="address" placeholder="Street, City, Country" minlength="5" maxlength="150" required>
 
       <label for="payment">Payment Method</label>
       <select id="payment" name="payment" required>

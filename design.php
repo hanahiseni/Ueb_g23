@@ -81,7 +81,7 @@ $finalPrice = $configuredCar->getFinalPrice();
   <?php } ?>
 </div>
 
-<section class="brand" id="<?php echo strtolower($currentCar['brand']); ?>">
+<section class="brand" id="<?php echo e(strtolower($currentCar['brand'])); ?>">
   <div class="wrap">
     <div class="grid">
 
@@ -148,7 +148,7 @@ $finalPrice = $configuredCar->getFinalPrice();
         </div>
 
         <div class="imgwrap">
-          <img src="<?php echo e($currentImage); ?>" alt="<?php echo $currentCar['full_model']; ?>" />
+          <img src="<?php echo e($currentImage); ?>" alt="<?php echo e($currentCar['full_model']); ?>" />
         </div>
 
         <div class="specs">

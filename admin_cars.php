@@ -9,7 +9,7 @@ if (!isset($_SESSION["user"])) {
     exit();
 }
 
-if ($_SESSION["role"] !== "admin") {
+if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "admin") {
     echo "No access - Admins only";
     exit();
 }
@@ -190,6 +190,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $error = "Invalid car delete request.";
 
         } else {
+             $getImage = mysqli_query(
+            $conn,
+            "SELECT image FROM cars WHERE id = $carId"
+        );
+
+        $imageData = mysqli_fetch_assoc($getImage);
+
+        if ($imageData && file_exists($imageData["image"])) {
+            unlink($imageData["image"]);
+        }
 
             $sql = "DELETE FROM cars WHERE id = ?";
 

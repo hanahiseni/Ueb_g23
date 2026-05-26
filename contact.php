@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $phone = trim($_POST["phone"] ?? "");
   $location = trim($_POST["location"] ?? "");
   $message = trim($_POST["message"] ?? "");
+  $message = strip_tags($message);
 
     if (!preg_match("/^[A-Za-z\s]{2,50}$/", $name)) {
         $errors[] = "Name must contain only letters and spaces (2-50 characters).";

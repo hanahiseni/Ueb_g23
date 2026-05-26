@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <a href="contact.html">Contact</a>
+  <a href="contact.php">Contact</a>
   <li><a href="logout.php">Logout</a></li>
 </nav>
 

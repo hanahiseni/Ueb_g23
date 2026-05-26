@@ -1,5 +1,17 @@
 <?php
 require_once __DIR__ . "/../helpers.php";
+require_once __DIR__ . "/../config/db.php";
+
+$result = mysqli_query($conn, "SELECT id, brand, model, price, image, description FROM cars WHERE id > 12 ORDER BY id DESC");
+$dbCars = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+function productImagePath($path) {
+    if (str_starts_with($path, "../")) {
+        return $path;
+    }
+
+    return "../" . ltrim($path, "/");
+}
 ?>
 <!DOCTYPE html>
 <html lang="sq">
@@ -786,6 +798,70 @@ require_once __DIR__ . "/../helpers.php";
                     </div>
                 </article>
 
+                <?php foreach ($dbCars as $car): ?>
+                    <?php
+                        $title = $car["brand"] . " " . $car["model"];
+                        $img = productImagePath($car["image"]);
+                        $id = "db_car_" . (int)$car["id"];
+                    ?>
+
+                    <article class="vehicle-card">
+                        <div class="vehicle-image">
+                            <img src="<?php echo e($img); ?>" alt="<?php echo e($title); ?>">
+                        </div>
+
+                        <div class="vehicle-header">
+                            <div class="vehicle-title"><?php echo e($title); ?></div>
+                            <div class="vehicle-subtitle">
+                                <?php echo e($car["description"] ?: "OR SIMILAR LUXURY VEHICLE"); ?>
+                            </div>
+
+                            <div class="badges">
+                                <span class="badge">Database item</span>
+                            </div>
+                        </div>
+
+                        <div class="price-row">
+                            <div class="price-main">
+                                <?php echo number_format((float)$car["price"], 2); ?> € total price<br>
+                            </div>
+                        </div>
+
+                        <div class="bottom-row">
+                            <div class="icon-list">
+                                <span class="icon-item">
+                                    <span class="icon-circle">5</span> persons
+                                </span>
+                                <span class="icon-item">
+                                    <span class="icon-circle">3</span> bags
+                                </span>
+                                <span class="icon-item">
+                                    <span class="icon-circle">4</span> doors
+                                </span>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="actions">
+                            <button
+                                class="btn primary fav-btn"
+                                type="button"
+                                data-id="<?php echo e($id); ?>"
+                                data-title="<?php echo e($title); ?>"
+                                data-price="<?php echo e($car["price"]); ?>"
+                                data-img="<?php echo e($img); ?>"
+                            >Add to Favorites</button>
+
+                            <button
+                                class="btn primary buy-now"
+                                type="button"
+                                data-id="<?php echo (int)$car["id"]; ?>"
+                            >Buy Now</button>
+                        </div>
+                    </article>
+                <?php endforeach; ?>
+
                 <br>
                 <section class="compare-section"></section>
 
@@ -847,6 +923,15 @@ document.addEventListener("click", (e) => {
 
   btn.textContent = isFav(item.id) ? "Remove Favorite" : "Add to Favorites";
   renderFavBadge();
+});
+</script>
+
+<script>
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".buy-now");
+  if (!btn) return;
+
+  window.location.assign(`buy.php?car=${encodeURIComponent(btn.dataset.id)}`);
 });
 </script>
 
